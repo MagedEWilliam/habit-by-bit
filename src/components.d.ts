@@ -16,6 +16,11 @@ export namespace Components {
     interface AppRoot {
     }
     interface YearCal {
+        "_id": number;
+        "color": string;
+        "day": number;
+        "month": number;
+        "name": string;
         "year": number;
     }
 }
@@ -62,6 +67,11 @@ declare namespace LocalJSX {
     interface AppRoot {
     }
     interface YearCal {
+        "_id"?: number;
+        "color"?: string;
+        "day"?: number;
+        "month"?: number;
+        "name"?: string;
         "year"?: number;
     }
     interface IntrinsicElements {

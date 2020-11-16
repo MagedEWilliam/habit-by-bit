@@ -1,25 +1,69 @@
-import { Component, h, Prop } from '@stencil/core';
+import { Component, h, Prop, Element } from '@stencil/core';
+import { get_data, set_data } from '../store';
 
 @Component({
   tag: 'year-cal',
   styleUrl: '../styles/year-cal.css'
 })
 export class YearCal {
+  @Prop() _id = 0;
+  @Prop() name = '';
+  @Prop() color = '';
+  @Prop() day = (new Date()).getDate()
+  @Prop() month = (new Date()).getMonth()+1
   @Prop() year = (new Date()).getFullYear()
+  @Element() comp;
 
   isLeapYear(year){
     return (year % 100 === 0) ? (year % 400 === 0) : (year % 4 === 0);
   }
 
+  handleDayClick(e) {
+    const dayClasses = e.target.classList;
+    const date = e.target.id.replace('date-', '');
+
+    if(dayClasses.contains('highlight')){
+      // remove
+      set_data(this._id, this.name, this.color, this.year, date, 'remove')
+      dayClasses.remove('highlight')
+    }else{
+      // add
+      set_data(this._id, this.name, this.color, this.year, date, 'insert')
+      dayClasses.add('highlight')
+    }
+  }
+
+  setHiglightOnCal(data){
+    if(Object.keys(data).length !== 0){
+      data.map(date=>{
+        this.comp.querySelector(`#date-${date}`).classList.add('highlight')
+      })
+    }
+  }
+
+  componentDidRender(){
+    this.setHiglightOnCal(get_data(this._id, this.year))
+
+    this.comp.querySelector(`#date-${this.month}-${this.day}`).classList.add('select')
+    this.comp.querySelectorAll('.day').forEach(day=>{
+      day.addEventListener('click', this.handleDayClick.bind(this))
+    })
+  }
+
+  disconnectedCallback(){
+    this.comp.querySelectorAll('.day').forEach(day=>{
+      day.removeEventListener('click', this.handleDayClick.bind(this))
+    })
+  }
+
   render() {
-    console.log(this.isLeapYear(this.year))
     return (
       <div class="year" year={this.year.toString()}>
       <span class="month" month="1">
         <p class="month-title" fill="#CECECE">jan</p>
-        <div class="day select" id="date-1-1">1</div>
+        <div class="day" id="date-1-1">1</div>
         <div class="day" id="date-1-2">2</div>
-        <div class="day highlight" id="date-1-3">3</div>
+        <div class="day" id="date-1-3">3</div>
         <div class="day" id="date-1-4">4</div>
         <div class="day" id="date-1-5">5</div>
         <div class="day" id="date-1-6">6</div>

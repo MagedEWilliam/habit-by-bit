@@ -1,6 +1,6 @@
 year-cal .year{
     width: 100vw;
-    max-width: 350px;
+    max-width: 320px;
     margin: auto;
     display: flex;
 }
@@ -14,13 +14,16 @@ year-cal .month-title{
 }
 year-cal .day{
     font-size: 2px;
-    height: calc(100vh / 33 - 1px);
+    height: calc(100vh / 33 - 2px);
     max-height: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 year-cal .select{
-    font-size: 13px;
     color: aqua;
     border: 1px solid aqua;
+    border-radius: 2px;
 }
 year-cal .highlight{
     font-size: 13px;

@@ -1,4 +1,4 @@
-year-cal .year{
+app-cal .year{
     width: 100vw;
     max-width: 320px;
     margin: auto;
@@ -10,16 +10,16 @@ year-cal .year{
         -ms-user-select: none;
             user-select: none;
 }
-year-cal .month{
+app-cal .month{
     width: calc(100vw / 12);
     text-align: center;
     cursor: pointer;
 }
-year-cal .month-title{
+app-cal .month-title{
     font-weight: lighter;
     font-size: 13px;
 }
-year-cal .day{
+app-cal .day{
     font-size: 2px;
     height: calc(100vh / 33 - 2px);
     max-height: 25px;
@@ -27,15 +27,15 @@ year-cal .day{
     flex-direction: column;
     justify-content: center;
 }
-year-cal .select{
+app-cal .select{
     color: aqua;
     border: 1px solid aqua;
     border-radius: 2px;
 }
-year-cal .highlight{
+app-cal .highlight{
     font-size: 13px;
     color: aqua
 }
-year-cal .twitch{
+app-cal .twitch{
 
 }

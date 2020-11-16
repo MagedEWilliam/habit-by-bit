@@ -1,12 +1,12 @@
 import { Component, h, Prop, Element } from '@stencil/core';
-import { get_data, set_data } from '../store';
+import { get_data, remove_date, insert_date } from '../store';
 
 @Component({
-  tag: 'year-cal',
-  styleUrl: '../styles/year-cal.css'
+  tag: 'app-cal',
+  styleUrl: '../styles/app-cal.css'
 })
-export class YearCal {
-  @Prop() _id = 0;
+export class AppCal {
+  @Prop() _id = '0';
   @Prop() name = '⛵️';
   @Prop() color = '#00ffff';
   @Prop() day = (new Date()).getDate()
@@ -24,11 +24,11 @@ export class YearCal {
 
     if(dayClasses.contains('highlight')){
       // remove
-      set_data(this._id, this.name, this.color, this.year, date, 'remove')
+      remove_date(this._id, this.name, this.color, this.year, date)
       dayClasses.remove('highlight')
     }else{
       // add
-      set_data(this._id, this.name, this.color, this.year, date, 'insert')
+      insert_date(this._id, this.name, this.color, this.year, date)
       dayClasses.add('highlight')
     }
   }
@@ -42,15 +42,18 @@ export class YearCal {
   }
 
   componentDidRender(){
-    this.setHiglightOnCal(get_data(this._id, this.year))
-
+    
     this.comp.querySelector(`#date-${this.month}-${this.day}`).classList.add('select')
     this.comp.querySelectorAll('.day').forEach(day=>{
+      day.classList.remove('highlight')
       day.addEventListener('click', this.handleDayClick.bind(this))
     })
+
+    this.setHiglightOnCal(get_data(this._id, this.year))
   }
 
   disconnectedCallback(){
+    console.log('im out')
     this.comp.querySelectorAll('.day').forEach(day=>{
       day.removeEventListener('click', this.handleDayClick.bind(this))
     })

@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from "uuid";
+
 /*
 checkIn: {
   id: {
@@ -41,7 +43,7 @@ export const get_data = (id=null, year=null) => {
   return result;
 }
 
-export const set_data = (id=0, name="⛵️", color="#00ffff", year="2020", date="1-1", method='remove') => {
+const set_data = (id='0', name="⛵️", color="#00ffff", year="2020", date="1-1", method='remove') => {
   let result = true;
   if (typeof localStorage !== 'undefined') {
     try {
@@ -49,6 +51,7 @@ export const set_data = (id=0, name="⛵️", color="#00ffff", year="2020", date
       let iddata = get_data(id)
       if(Object.keys(alldata).length === 0 || !iddata){
         alldata[id] = {}
+        alldata[id].id = id
         alldata[id].name = name
         alldata[id].color = color
         alldata[id].years = {}
@@ -68,4 +71,28 @@ export const set_data = (id=0, name="⛵️", color="#00ffff", year="2020", date
     }
   }
   return result;
+}
+
+export const remove_date = (id=0, name="⛵️", color="#00ffff", year="2020", date="1-1") => {
+  set_data(id, name, color, year, date, 'remove')
+}
+
+export const insert_date = (id=0, name="⛵️", color="#00ffff", year="2020", date="1-1") => {
+  set_data(id, name, color, year, date, 'insert')
+}
+
+export const new_habit = (name, color)=> {
+  if (typeof localStorage !== 'undefined') {
+    try {
+      let alldata = get_data()
+      alldata[id].id = uuidv4().toString()
+      alldata[id].name = name
+      alldata[id].color = color
+      alldata[id].years = {}
+      alldata[id].years[year] = []
+    }
+    catch(e) {
+      console.log(e)
+    }
+  }
 }

@@ -6,6 +6,14 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface AppCal {
+        "_id": string;
+        "color": string;
+        "day": number;
+        "month": number;
+        "name": string;
+        "year": number;
+    }
     interface AppHome {
         "match": any;
     }
@@ -15,16 +23,18 @@ export namespace Components {
     }
     interface AppRoot {
     }
-    interface YearCal {
+    interface AppTabs {
         "_id": number;
-        "color": string;
-        "day": number;
-        "month": number;
-        "name": string;
         "year": number;
     }
 }
 declare global {
+    interface HTMLAppCalElement extends Components.AppCal, HTMLStencilElement {
+    }
+    var HTMLAppCalElement: {
+        prototype: HTMLAppCalElement;
+        new (): HTMLAppCalElement;
+    };
     interface HTMLAppHomeElement extends Components.AppHome, HTMLStencilElement {
     }
     var HTMLAppHomeElement: {
@@ -43,20 +53,29 @@ declare global {
         prototype: HTMLAppRootElement;
         new (): HTMLAppRootElement;
     };
-    interface HTMLYearCalElement extends Components.YearCal, HTMLStencilElement {
+    interface HTMLAppTabsElement extends Components.AppTabs, HTMLStencilElement {
     }
-    var HTMLYearCalElement: {
-        prototype: HTMLYearCalElement;
-        new (): HTMLYearCalElement;
+    var HTMLAppTabsElement: {
+        prototype: HTMLAppTabsElement;
+        new (): HTMLAppTabsElement;
     };
     interface HTMLElementTagNameMap {
+        "app-cal": HTMLAppCalElement;
         "app-home": HTMLAppHomeElement;
         "app-profile": HTMLAppProfileElement;
         "app-root": HTMLAppRootElement;
-        "year-cal": HTMLYearCalElement;
+        "app-tabs": HTMLAppTabsElement;
     }
 }
 declare namespace LocalJSX {
+    interface AppCal {
+        "_id"?: string;
+        "color"?: string;
+        "day"?: number;
+        "month"?: number;
+        "name"?: string;
+        "year"?: number;
+    }
     interface AppHome {
         "match"?: any;
     }
@@ -66,29 +85,27 @@ declare namespace LocalJSX {
     }
     interface AppRoot {
     }
-    interface YearCal {
+    interface AppTabs {
         "_id"?: number;
-        "color"?: string;
-        "day"?: number;
-        "month"?: number;
-        "name"?: string;
         "year"?: number;
     }
     interface IntrinsicElements {
+        "app-cal": AppCal;
         "app-home": AppHome;
         "app-profile": AppProfile;
         "app-root": AppRoot;
-        "year-cal": YearCal;
+        "app-tabs": AppTabs;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "app-cal": LocalJSX.AppCal & JSXBase.HTMLAttributes<HTMLAppCalElement>;
             "app-home": LocalJSX.AppHome & JSXBase.HTMLAttributes<HTMLAppHomeElement>;
             "app-profile": LocalJSX.AppProfile & JSXBase.HTMLAttributes<HTMLAppProfileElement>;
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
-            "year-cal": LocalJSX.YearCal & JSXBase.HTMLAttributes<HTMLYearCalElement>;
+            "app-tabs": LocalJSX.AppTabs & JSXBase.HTMLAttributes<HTMLAppTabsElement>;
         }
     }
 }

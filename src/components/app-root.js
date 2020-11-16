@@ -10,7 +10,7 @@ export class AppRoot {
         <main>
           <stencil-router>
             <stencil-route-switch scrollTopOffset={0}>
-              <stencil-route url="/:id" component="app-home" />
+              <stencil-route url="/:_id" component="app-home" />
               <stencil-route url="/" component="app-home" />
             </stencil-route-switch>
           </stencil-router>

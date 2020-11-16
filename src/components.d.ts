@@ -15,6 +15,9 @@ export namespace Components {
     }
     interface AppRoot {
     }
+    interface YearCal {
+        "year": number;
+    }
 }
 declare global {
     interface HTMLAppHomeElement extends Components.AppHome, HTMLStencilElement {
@@ -35,10 +38,17 @@ declare global {
         prototype: HTMLAppRootElement;
         new (): HTMLAppRootElement;
     };
+    interface HTMLYearCalElement extends Components.YearCal, HTMLStencilElement {
+    }
+    var HTMLYearCalElement: {
+        prototype: HTMLYearCalElement;
+        new (): HTMLYearCalElement;
+    };
     interface HTMLElementTagNameMap {
         "app-home": HTMLAppHomeElement;
         "app-profile": HTMLAppProfileElement;
         "app-root": HTMLAppRootElement;
+        "year-cal": HTMLYearCalElement;
     }
 }
 declare namespace LocalJSX {
@@ -51,10 +61,14 @@ declare namespace LocalJSX {
     }
     interface AppRoot {
     }
+    interface YearCal {
+        "year"?: number;
+    }
     interface IntrinsicElements {
         "app-home": AppHome;
         "app-profile": AppProfile;
         "app-root": AppRoot;
+        "year-cal": YearCal;
     }
 }
 export { LocalJSX as JSX };
@@ -64,6 +78,7 @@ declare module "@stencil/core" {
             "app-home": LocalJSX.AppHome & JSXBase.HTMLAttributes<HTMLAppHomeElement>;
             "app-profile": LocalJSX.AppProfile & JSXBase.HTMLAttributes<HTMLAppProfileElement>;
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
+            "year-cal": LocalJSX.YearCal & JSXBase.HTMLAttributes<HTMLYearCalElement>;
         }
     }
 }

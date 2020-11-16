@@ -10,7 +10,7 @@ export class AppHome {
   render() {
     return (
       <div class="app-home">
-        <b>{this.match && this.match.params.id}</b>
+        <year-cal></year-cal>
       </div>
     );
   }

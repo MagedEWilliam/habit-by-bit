@@ -14,5 +14,8 @@
     "@stencil/core": "^2.0.0",
     "@stencil/router": "^1.0.1"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "normalize-css": "^2.3.1"
+  }
 }

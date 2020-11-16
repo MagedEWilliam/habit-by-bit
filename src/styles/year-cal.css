@@ -1,0 +1,31 @@
+year-cal .year{
+    width: 100vw;
+    max-width: 350px;
+    margin: auto;
+    display: flex;
+}
+year-cal .month{
+    width: calc(100vw / 12);
+    text-align: center;
+}
+year-cal .month-title{
+    font-weight: lighter;
+    font-size: 13px;
+}
+year-cal .day{
+    font-size: 2px;
+    height: calc(100vh / 33 - 1px);
+    max-height: 25px;
+}
+year-cal .select{
+    font-size: 13px;
+    color: aqua;
+    border: 1px solid aqua;
+}
+year-cal .highlight{
+    font-size: 13px;
+    color: aqua
+}
+year-cal .twitch{
+
+}

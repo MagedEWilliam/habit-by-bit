@@ -41,16 +41,17 @@ export const get_data = (id=null, year=null) => {
   return result;
 }
 
-export const set_data = (id=0, name="water", color="#fff", year="2020", date="1-1", method='remove') => {
+export const set_data = (id=0, name="⛵️", color="#00ffff", year="2020", date="1-1", method='remove') => {
   let result = true;
   if (typeof localStorage !== 'undefined') {
     try {
       let alldata = get_data()
-      if(Object.keys(alldata).length === 0){
-        alldata[id] = id
+      let iddata = get_data(id)
+      if(Object.keys(alldata).length === 0 || !iddata){
+        alldata[id] = {}
         alldata[id].name = name
         alldata[id].color = color
-        alldata[id].years = year
+        alldata[id].years = {}
         alldata[id].years[year] = [date]
       }
       let getYearData = get_data(id, year)

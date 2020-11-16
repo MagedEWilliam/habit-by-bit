@@ -3,10 +3,17 @@ year-cal .year{
     max-width: 320px;
     margin: auto;
     display: flex;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+     -khtml-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
 }
 year-cal .month{
     width: calc(100vw / 12);
     text-align: center;
+    cursor: pointer;
 }
 year-cal .month-title{
     font-weight: lighter;

@@ -7,8 +7,8 @@ import { get_data, set_data } from '../store';
 })
 export class YearCal {
   @Prop() _id = 0;
-  @Prop() name = '';
-  @Prop() color = '';
+  @Prop() name = '⛵️';
+  @Prop() color = '#00ffff';
   @Prop() day = (new Date()).getDate()
   @Prop() month = (new Date()).getMonth()+1
   @Prop() year = (new Date()).getFullYear()

@@ -7,7 +7,9 @@ app-tabs .tabs{
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    column-gap: 15px;
     overflow: auto;
+    font-family: 'Coiny', cursive;
     
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -15,4 +17,8 @@ app-tabs .tabs{
        -moz-user-select: none;
         -ms-user-select: none;
             user-select: none;
+}
+app-tabs stencil-route-link a{
+  color: rgba(250,250,250,0.8);
+  text-decoration: none;
 }

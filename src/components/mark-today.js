@@ -28,7 +28,7 @@ export class MarkToday {
 
     setTimeout( e=> {
       const dayClasses = document.querySelector(`#date-${this.month}-${this.day}`)
-      if(dayClasses.classList.contains('highlight')){
+      if(dayClasses && dayClasses.classList.contains('highlight')){
         this.opacity = 0;
       }else{
         this.opacity = 1;

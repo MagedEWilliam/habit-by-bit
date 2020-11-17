@@ -20,6 +20,7 @@ app-cal .month-title{
     font-size: 13px;
 }
 app-cal .day{
+    font-family: 'Coiny', cursive;
     font-size: 2px;
     height: calc(100vh / 33 - 2px);
     max-height: 25px;
@@ -33,6 +34,8 @@ app-cal .select{
     border-radius: 2px;
 }
 app-cal .highlight{
+    background-color: rgba(250,250,250,0.2);
+    border-radius: 5px;
     font-size: 13px;
     color: aqua
 }

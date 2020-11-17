@@ -43,7 +43,7 @@ export const get_data = (id=null, year=null) => {
   return result;
 }
 
-const set_data = (id='0', name="⛵️", color="#00ffff", year="2020", date="1-1", method='remove') => {
+const set_data = (id='0', year="2020", date="1-1", method='remove') => {
   let result = true;
   if (typeof localStorage !== 'undefined') {
     try {
@@ -52,8 +52,8 @@ const set_data = (id='0', name="⛵️", color="#00ffff", year="2020", date="1-1
       if(Object.keys(alldata).length === 0 || !iddata){
         alldata[id] = {}
         alldata[id].id = id
-        alldata[id].name = name
-        alldata[id].color = color
+        alldata[id].name = id
+        alldata[id].color = '#00FFFF'
         alldata[id].years = {}
         alldata[id].years[year] = [date]
       }
@@ -73,12 +73,12 @@ const set_data = (id='0', name="⛵️", color="#00ffff", year="2020", date="1-1
   return result;
 }
 
-export const remove_date = (id=0, name="⛵️", color="#00ffff", year="2020", date="1-1") => {
-  set_data(id, name, color, year, date, 'remove')
+export const remove_date = (id=0, year="2020", date="1-1") => {
+  set_data(id, year, date, 'remove')
 }
 
-export const insert_date = (id=0, name="⛵️", color="#00ffff", year="2020", date="1-1") => {
-  set_data(id, name, color, year, date, 'insert')
+export const insert_date = (id=0, year="2020", date="1-1") => {
+  set_data(id, year, date, 'insert')
 }
 
 export const new_habit = (name, color)=> {

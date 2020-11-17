@@ -19,16 +19,17 @@ export class AppCal {
   }
 
   handleDayClick(e) {
+    
     const dayClasses = e.target.classList;
     const date = e.target.id.replace('date-', '');
 
     if(dayClasses.contains('highlight')){
       // remove
-      remove_date(this._id, this.name, this.color, this.year, date)
+      remove_date(this._id, this.year, date)
       dayClasses.remove('highlight')
     }else{
       // add
-      insert_date(this._id, this.name, this.color, this.year, date)
+      insert_date(this._id, this.year, date)
       dayClasses.add('highlight')
     }
   }
@@ -41,21 +42,21 @@ export class AppCal {
     }
   }
 
+  x = this.handleDayClick.bind(this)
   componentDidRender(){
-    
     this.comp.querySelector(`#date-${this.month}-${this.day}`).classList.add('select')
     this.comp.querySelectorAll('.day').forEach(day=>{
+      day.removeEventListener('click', this.x )
       day.classList.remove('highlight')
-      day.addEventListener('click', this.handleDayClick.bind(this))
+      day.addEventListener('click', this.x )
     })
-
+    
     this.setHiglightOnCal(get_data(this._id, this.year))
   }
-
+  
   disconnectedCallback(){
-    console.log('im out')
     this.comp.querySelectorAll('.day').forEach(day=>{
-      day.removeEventListener('click', this.handleDayClick.bind(this))
+      day.removeEventListener('click', this.handleDayClick.bind(this), true )
     })
   }
 

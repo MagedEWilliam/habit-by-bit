@@ -27,6 +27,9 @@ export namespace Components {
         "_id": number;
         "year": number;
     }
+    interface MarkToday {
+        "_id": string;
+    }
 }
 declare global {
     interface HTMLAppCalElement extends Components.AppCal, HTMLStencilElement {
@@ -59,12 +62,19 @@ declare global {
         prototype: HTMLAppTabsElement;
         new (): HTMLAppTabsElement;
     };
+    interface HTMLMarkTodayElement extends Components.MarkToday, HTMLStencilElement {
+    }
+    var HTMLMarkTodayElement: {
+        prototype: HTMLMarkTodayElement;
+        new (): HTMLMarkTodayElement;
+    };
     interface HTMLElementTagNameMap {
         "app-cal": HTMLAppCalElement;
         "app-home": HTMLAppHomeElement;
         "app-profile": HTMLAppProfileElement;
         "app-root": HTMLAppRootElement;
         "app-tabs": HTMLAppTabsElement;
+        "mark-today": HTMLMarkTodayElement;
     }
 }
 declare namespace LocalJSX {
@@ -89,12 +99,16 @@ declare namespace LocalJSX {
         "_id"?: number;
         "year"?: number;
     }
+    interface MarkToday {
+        "_id"?: string;
+    }
     interface IntrinsicElements {
         "app-cal": AppCal;
         "app-home": AppHome;
         "app-profile": AppProfile;
         "app-root": AppRoot;
         "app-tabs": AppTabs;
+        "mark-today": MarkToday;
     }
 }
 export { LocalJSX as JSX };
@@ -106,6 +120,7 @@ declare module "@stencil/core" {
             "app-profile": LocalJSX.AppProfile & JSXBase.HTMLAttributes<HTMLAppProfileElement>;
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
             "app-tabs": LocalJSX.AppTabs & JSXBase.HTMLAttributes<HTMLAppTabsElement>;
+            "mark-today": LocalJSX.MarkToday & JSXBase.HTMLAttributes<HTMLMarkTodayElement>;
         }
     }
 }

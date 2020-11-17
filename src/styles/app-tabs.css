@@ -25,15 +25,17 @@ app-tabs stencil-route-link a{
 app-tabs stencil-route-link a.link-active .tab{
   color: rgba(250,250,250, 1);
 }
-app-tabs stencil-route-link a:before,
-app-tabs stencil-route-link a:after{
-  content: ' ';
+app-tabs stencil-route-link a .tab:before{
+  content: '[';
 }
-app-tabs stencil-route-link a.link-active:before{
+app-tabs stencil-route-link a .tab:after{
+  content: ']';
+}
+app-tabs stencil-route-link a.link-active .tab:before{
   content: '[';
   color: rgba(250,250,250, 1);
 }
-app-tabs stencil-route-link a.link-active:after{
+app-tabs stencil-route-link a.link-active .tab:after{
   content: ']';
   color: rgba(250,250,250, 1);
 }

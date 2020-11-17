@@ -35,7 +35,7 @@ export class AppCal {
   }
 
   setHiglightOnCal(data){
-    if(Object.keys(data).length !== 0){
+    if(data && Object.keys(data).length !== 0){
       data.map(date=>{
         this.comp.querySelector(`#date-${date}`).classList.add('highlight')
       })

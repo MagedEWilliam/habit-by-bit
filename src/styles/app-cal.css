@@ -48,7 +48,8 @@ app-cal .highlight{
 }
 
 app-cal .highlight.select:after{
-    content: unset;
+    opacity: .5;
+    animation: unset
 }
 app-cal .twitch{
 

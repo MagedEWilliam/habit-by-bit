@@ -10,7 +10,7 @@ export class AppHome {
   render() {
     return (
       <div class="app-home">
-        <app-cal _id={this.match.params._id}></app-cal>
+        <app-cal _id={this.match.params._id} year={this.match.params.year}></app-cal>
         <mark-today _id={this.match.params._id} />
         <app-tabs />
       </div>

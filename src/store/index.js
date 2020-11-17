@@ -49,12 +49,14 @@ const set_data = (id='0', year="2020", date="1-1", method='remove') => {
     try {
       let alldata = get_data()
       let iddata = get_data(id)
-      if(Object.keys(alldata).length === 0 || !iddata){
+      if(Object.keys(alldata).length === 0 || !iddata ){
         alldata[id] = {}
         alldata[id].id = id
         alldata[id].name = id
         alldata[id].color = '#00FFFF'
         alldata[id].years = {}
+      }
+      if(!alldata[id].years[year]){
         alldata[id].years[year] = [date]
       }
       let getYearData = get_data(id, year)

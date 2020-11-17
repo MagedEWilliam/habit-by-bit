@@ -36,7 +36,7 @@ export class MarkToday {
     }, 1, this)
 
     return (
-        <button style={{'opacity':this.opacity}} onClick={this.handleTodayClick.bind(this)}>Mark today?</button>
+        <button style={{'opacity':this.opacity}} onClick={this.handleTodayClick.bind(this)}>[ Mark today? ]</button>
     );
   }
 }

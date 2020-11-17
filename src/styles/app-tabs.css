@@ -19,6 +19,21 @@ app-tabs .tabs{
             user-select: none;
 }
 app-tabs stencil-route-link a{
-  color: rgba(250,250,250,0.8);
+  color: rgba(250,250,250,0.5);
   text-decoration: none;
+}
+app-tabs stencil-route-link a.link-active .tab{
+  color: rgba(250,250,250, 1);
+}
+app-tabs stencil-route-link a:before,
+app-tabs stencil-route-link a:after{
+  content: ' ';
+}
+app-tabs stencil-route-link a.link-active:before{
+  content: '[';
+  color: rgba(250,250,250, 1);
+}
+app-tabs stencil-route-link a.link-active:after{
+  content: ']';
+  color: rgba(250,250,250, 1);
 }

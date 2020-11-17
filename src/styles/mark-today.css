@@ -12,7 +12,11 @@ mark-today button{
     padding: 8px 16px;
     font-family: 'Coiny', cursive;
     font-size: 16px;
-    transition: opacity 300ms ease-in;
+    opacity: 0;
+}
+mark-today button.show{
+    opacity: 1;
+    animation: blink 1.2s steps(4, start) infinite;
 }
 
 mark-today button:hover{

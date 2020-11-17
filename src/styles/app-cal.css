@@ -33,7 +33,7 @@ app-cal .select:after{
     position: absolute;
     font-size: 32px;
     color: white;
-    animation: blink 1s steps(2, start) infinite;
+    animation: blink 1.2s steps(4, start) infinite;
 }
 app-cal .select{
     color: aqua;
@@ -56,6 +56,6 @@ app-cal .twitch{
 
 @keyframes blink{
     to {
-        visibility: hidden;
+        opacity: 0.4;
     }
 }

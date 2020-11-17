@@ -6,7 +6,7 @@ import { Component, h, Prop, State } from '@stencil/core';
 })
 export class MarkToday {
   @Prop() _id = '0';
-  @State() opacity = 0;
+  @State() show = false;
   @State() day = (new Date()).getDate();
   @State() month = (new Date()).getMonth()+1
   @State() year = (new Date()).getFullYear()
@@ -15,28 +15,26 @@ export class MarkToday {
     const dayClasses = document.querySelector(`#date-${this.month}-${this.day}`)
     if(!dayClasses.classList.contains('highlight')){
       dayClasses.click()
-      this.opacity = 0;
+      this.show = false;
     }
   }
 
   @Watch('_id')
-  opacityReset(){
-    this.opacity = 1;
+  hideReset(){
+    this.show = true;
   }
   
   render() {
 
-    setTimeout( e=> {
-      const dayClasses = document.querySelector(`#date-${this.month}-${this.day}`)
-      if(dayClasses && dayClasses.classList.contains('highlight')){
-        this.opacity = 0;
-      }else{
-        this.opacity = 1;
-      }
-    }, 1, this)
+    const dayClasses = document.querySelector(`#date-${this.month}-${this.day}`)
+    if(dayClasses && dayClasses.classList.contains('highlight')){
+      this.show = false;
+    }else{
+      this.show = true;
+    }
 
     return (
-        <button style={{'opacity':this.opacity}} onClick={this.handleTodayClick.bind(this)}>[ Mark today? ]</button>
+      <button class={{'show':this.show}} onClick={this.handleTodayClick.bind(this)}>[ Mark today? ]</button>
     );
   }
 }

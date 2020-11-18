@@ -15,7 +15,10 @@ export namespace Components {
         "year": number;
     }
     interface AppHome {
+        "history": any;
         "match": any;
+    }
+    interface AppNew {
     }
     interface AppProfile {
         "history": any;
@@ -24,7 +27,7 @@ export namespace Components {
     interface AppRoot {
     }
     interface AppTabs {
-        "_id": number;
+        "_id": string;
         "year": number;
     }
     interface MarkToday {
@@ -43,6 +46,12 @@ declare global {
     var HTMLAppHomeElement: {
         prototype: HTMLAppHomeElement;
         new (): HTMLAppHomeElement;
+    };
+    interface HTMLAppNewElement extends Components.AppNew, HTMLStencilElement {
+    }
+    var HTMLAppNewElement: {
+        prototype: HTMLAppNewElement;
+        new (): HTMLAppNewElement;
     };
     interface HTMLAppProfileElement extends Components.AppProfile, HTMLStencilElement {
     }
@@ -71,6 +80,7 @@ declare global {
     interface HTMLElementTagNameMap {
         "app-cal": HTMLAppCalElement;
         "app-home": HTMLAppHomeElement;
+        "app-new": HTMLAppNewElement;
         "app-profile": HTMLAppProfileElement;
         "app-root": HTMLAppRootElement;
         "app-tabs": HTMLAppTabsElement;
@@ -87,7 +97,10 @@ declare namespace LocalJSX {
         "year"?: number;
     }
     interface AppHome {
+        "history"?: any;
         "match"?: any;
+    }
+    interface AppNew {
     }
     interface AppProfile {
         "history"?: any;
@@ -96,7 +109,7 @@ declare namespace LocalJSX {
     interface AppRoot {
     }
     interface AppTabs {
-        "_id"?: number;
+        "_id"?: string;
         "year"?: number;
     }
     interface MarkToday {
@@ -105,6 +118,7 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "app-cal": AppCal;
         "app-home": AppHome;
+        "app-new": AppNew;
         "app-profile": AppProfile;
         "app-root": AppRoot;
         "app-tabs": AppTabs;
@@ -117,6 +131,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "app-cal": LocalJSX.AppCal & JSXBase.HTMLAttributes<HTMLAppCalElement>;
             "app-home": LocalJSX.AppHome & JSXBase.HTMLAttributes<HTMLAppHomeElement>;
+            "app-new": LocalJSX.AppNew & JSXBase.HTMLAttributes<HTMLAppNewElement>;
             "app-profile": LocalJSX.AppProfile & JSXBase.HTMLAttributes<HTMLAppProfileElement>;
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
             "app-tabs": LocalJSX.AppTabs & JSXBase.HTMLAttributes<HTMLAppTabsElement>;

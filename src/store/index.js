@@ -52,7 +52,7 @@ const set_data = (id='0', year="2020", date="1-1", method='remove') => {
       if(Object.keys(alldata).length === 0 || !iddata ){
         alldata[id] = {}
         alldata[id].id = id
-        alldata[id].name = id
+        alldata[id].name = decodeURIComponent(id)
         alldata[id].color = '#00FFFF'
         alldata[id].years = {}
       }
@@ -81,20 +81,4 @@ export const remove_date = (id=0, year="2020", date="1-1") => {
 
 export const insert_date = (id=0, year="2020", date="1-1") => {
   set_data(id, year, date, 'insert')
-}
-
-export const new_habit = (name, color)=> {
-  if (typeof localStorage !== 'undefined') {
-    try {
-      let alldata = get_data()
-      alldata[id].id = uuidv4().toString()
-      alldata[id].name = name
-      alldata[id].color = color
-      alldata[id].years = {}
-      alldata[id].years[year] = []
-    }
-    catch(e) {
-      console.log(e)
-    }
-  }
 }

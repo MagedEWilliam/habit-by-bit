@@ -1,41 +1,54 @@
 app-tabs .tabs{
-    width: 100%;
-    max-width: 320px;
-    margin: auto;
-    min-height: 32px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    column-gap: 15px;
-    overflow: auto;
-    font-family: 'Coiny', cursive;
-    
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-     -khtml-user-select: none;
-       -moz-user-select: none;
-        -ms-user-select: none;
-            user-select: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 32px;
+  max-width: 320px;
+  margin: auto;
+  overflow: auto;
+  font-family: 'Coiny', cursive;
+  
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+app-tabs .tab-wrapper{
+  display: flex;
+}
+app-tabs stencil-route-link{
+  min-width: fit-content;
 }
 app-tabs stencil-route-link a{
+  margin: 0 8px;
   color: rgba(250,250,250,0.5);
   text-decoration: none;
+  position: relative;
 }
 app-tabs stencil-route-link a.link-active .tab{
   color: rgba(250,250,250, 1);
 }
 app-tabs stencil-route-link a .tab:before{
   content: '[';
+  position: absolute;
+  left: -10px;
 }
 app-tabs stencil-route-link a .tab:after{
   content: ']';
+  position: absolute;
+  right: -10px;
 }
 app-tabs stencil-route-link a.link-active .tab:before{
   content: '[';
+  position: absolute;
   color: rgba(250,250,250, 1);
 }
 app-tabs stencil-route-link a.link-active .tab:after{
   content: ']';
   color: rgba(250,250,250, 1);
+  position: absolute;
 }

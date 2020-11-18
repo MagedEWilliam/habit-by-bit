@@ -11,6 +11,7 @@ export class AppOptions {
   @State() month = (new Date()).getMonth()+1
   @Prop() year = (new Date()).getFullYear()
   @Prop() _id = '0';
+  @Prop() go;
 
   getNextHabit(){
     let index = 0;
@@ -30,7 +31,7 @@ export class AppOptions {
     if(!dayClasses.classList.contains('highlight')){
       dayClasses.click();
 
-      window.location.href = '/' + this.getNextHabit().id;
+      this.go('/' + this.getNextHabit().id)
       this.show = false;
     }
   }
@@ -44,6 +45,7 @@ export class AppOptions {
     const deleteit = confirm(`Delete ${this._id}`)
     if(deleteit){
       deleteByID(this._id)
+      this.go('/')
     }
   }
   

@@ -15,13 +15,17 @@ export class AppHome {
     return data.length === 0 ?  null : data[0].id
   }
 
+  proxyHistory(url){
+    this.history.push(url)
+  }
+
   render() {
     return (
       <div class="app-home">
         {this.match.params._id ?
           [
           <app-cal _id={this.match.params._id} year={this.match.params.year} />,
-          <app-options _id={this.match.params._id} year={this.match.params.year}/>,
+          <app-options go={this.proxyHistory.bind(this)} _id={this.match.params._id} year={this.match.params.year}/>,
           <app-tabs _id={this.match.params._id} />] 
           : ( !this.goToFirstHabit() ? 
             <app-new/> 

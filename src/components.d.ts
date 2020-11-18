@@ -22,6 +22,7 @@ export namespace Components {
     }
     interface AppOptions {
         "_id": string;
+        "go": any;
         "year": number;
     }
     interface AppProfile {
@@ -105,6 +106,7 @@ declare namespace LocalJSX {
     }
     interface AppOptions {
         "_id"?: string;
+        "go"?: any;
         "year"?: number;
     }
     interface AppProfile {

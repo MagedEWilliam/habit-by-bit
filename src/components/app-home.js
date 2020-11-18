@@ -1,4 +1,4 @@
-import { Component, h } from '@stencil/core';
+import { Component, h, Prop, State } from '@stencil/core';
 import { MatchResults, RouterHistory } from '@stencil/router';
 import { get_data } from '../store';
 
@@ -8,7 +8,6 @@ import { get_data } from '../store';
 export class AppHome {
   @Prop() match;
   @Prop() history;
-
 
   goToFirstHabit(){
     const data = Object.values( get_data() )

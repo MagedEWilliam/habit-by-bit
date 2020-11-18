@@ -11,6 +11,7 @@ app-new .form{
 }
 
 app-new .newhabit{
+  text-align: center;
   height: 32px;
   border-radius: 5px;
   border: none;

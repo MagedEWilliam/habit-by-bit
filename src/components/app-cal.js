@@ -23,6 +23,7 @@ export class AppCal {
     const dayClasses = e.target.classList;
     const date = e.target.id.replace('date-', '');
 
+    
     if(dayClasses.contains('highlight')){
       // remove
       remove_date(this._id, this.year, date)
@@ -31,6 +32,12 @@ export class AppCal {
       // add
       insert_date(this._id, this.year, date)
       dayClasses.add('highlight')
+    }
+    
+    if(this.comp.querySelector('.select.highlight')){
+      document.querySelector('mark-today button').classList.remove('show')
+    }else{
+      document.querySelector('mark-today button').classList.add('show')
     }
   }
 

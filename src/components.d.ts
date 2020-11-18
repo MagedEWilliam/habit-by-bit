@@ -35,6 +35,11 @@ export namespace Components {
         "_id": string;
         "year": number;
     }
+    interface CalMonth {
+        "days": number;
+        "name": string;
+        "num": number;
+    }
 }
 declare global {
     interface HTMLAppCalElement extends Components.AppCal, HTMLStencilElement {
@@ -79,6 +84,12 @@ declare global {
         prototype: HTMLAppTabsElement;
         new (): HTMLAppTabsElement;
     };
+    interface HTMLCalMonthElement extends Components.CalMonth, HTMLStencilElement {
+    }
+    var HTMLCalMonthElement: {
+        prototype: HTMLCalMonthElement;
+        new (): HTMLCalMonthElement;
+    };
     interface HTMLElementTagNameMap {
         "app-cal": HTMLAppCalElement;
         "app-home": HTMLAppHomeElement;
@@ -87,6 +98,7 @@ declare global {
         "app-profile": HTMLAppProfileElement;
         "app-root": HTMLAppRootElement;
         "app-tabs": HTMLAppTabsElement;
+        "cal-month": HTMLCalMonthElement;
     }
 }
 declare namespace LocalJSX {
@@ -119,6 +131,11 @@ declare namespace LocalJSX {
         "_id"?: string;
         "year"?: number;
     }
+    interface CalMonth {
+        "days"?: number;
+        "name"?: string;
+        "num"?: number;
+    }
     interface IntrinsicElements {
         "app-cal": AppCal;
         "app-home": AppHome;
@@ -127,6 +144,7 @@ declare namespace LocalJSX {
         "app-profile": AppProfile;
         "app-root": AppRoot;
         "app-tabs": AppTabs;
+        "cal-month": CalMonth;
     }
 }
 export { LocalJSX as JSX };
@@ -140,6 +158,7 @@ declare module "@stencil/core" {
             "app-profile": LocalJSX.AppProfile & JSXBase.HTMLAttributes<HTMLAppProfileElement>;
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
             "app-tabs": LocalJSX.AppTabs & JSXBase.HTMLAttributes<HTMLAppTabsElement>;
+            "cal-month": LocalJSX.CalMonth & JSXBase.HTMLAttributes<HTMLCalMonthElement>;
         }
     }
 }

@@ -10,16 +10,16 @@ app-cal .year{
         -ms-user-select: none;
             user-select: none;
 }
-app-cal .month{
+cal-month {
     width: calc(100vw / 12);
     text-align: center;
     cursor: pointer;
 }
-app-cal .month-title{
+cal-month .month-title{
     font-weight: lighter;
     font-size: 13px;
 }
-app-cal .day{
+cal-month .day{
     font-family: 'Coiny', cursive;
     font-size: 2px;
     height: calc(100vh / 33 - 2px);
@@ -29,29 +29,29 @@ app-cal .day{
     justify-content: center;
     -webkit-text-security: square;
 }
-app-cal .select:after{
+cal-month .select:after{
     content: '⛶';
     position: absolute;
     font-size: 32px;
     color: white;
     animation: blink 1.2s steps(4, start) infinite;
 }
-app-cal .select{
+cal-month .select{
     color: aqua;
     -webkit-text-security: none;
 }
-app-cal .highlight{
+cal-month .highlight{
     border-radius: 5px;
     font-size: 13px;
     -webkit-text-security: none;
     color: aqua
 }
 
-app-cal .highlight.select:after{
+cal-month .highlight.select:after{
     opacity: .5;
     animation: unset
 }
-app-cal .twitch{
+cal-month .twitch{
 
 }
 

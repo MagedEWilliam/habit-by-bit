@@ -38,12 +38,9 @@ app-cal .select:after{
 }
 app-cal .select{
     color: aqua;
-    /* border: 1px solid aqua;
-    border-radius: 2px; */
     -webkit-text-security: none;
 }
 app-cal .highlight{
-    background-color: rgba(250,250,250,0.2);
     border-radius: 5px;
     font-size: 13px;
     -webkit-text-security: none;

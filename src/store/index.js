@@ -82,3 +82,21 @@ export const remove_date = (id=0, year="2020", date="1-1") => {
 export const insert_date = (id=0, year="2020", date="1-1") => {
   set_data(id, year, date, 'insert')
 }
+
+export const deleteByID = (id=0) => {
+  console.log('> delete '+id)
+  let result = {};
+  if (typeof localStorage !== 'undefined') {
+    try {
+      const retriveHabits = JSON.parse( localStorage.getItem('checkIn') );
+      if(retriveHabits && Object.keys(retriveHabits).length > 0){
+        delete retriveHabitsp[id];
+        console.log( retriveHabitsp )
+      }
+    }
+    catch(e) {
+      console.log(e)
+     }
+  }
+  return result;
+}

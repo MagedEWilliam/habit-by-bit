@@ -20,6 +20,10 @@ export namespace Components {
     }
     interface AppNew {
     }
+    interface AppOptions {
+        "_id": string;
+        "year": number;
+    }
     interface AppProfile {
         "history": any;
         "match": any;
@@ -29,9 +33,6 @@ export namespace Components {
     interface AppTabs {
         "_id": string;
         "year": number;
-    }
-    interface MarkToday {
-        "_id": string;
     }
 }
 declare global {
@@ -53,6 +54,12 @@ declare global {
         prototype: HTMLAppNewElement;
         new (): HTMLAppNewElement;
     };
+    interface HTMLAppOptionsElement extends Components.AppOptions, HTMLStencilElement {
+    }
+    var HTMLAppOptionsElement: {
+        prototype: HTMLAppOptionsElement;
+        new (): HTMLAppOptionsElement;
+    };
     interface HTMLAppProfileElement extends Components.AppProfile, HTMLStencilElement {
     }
     var HTMLAppProfileElement: {
@@ -71,20 +78,14 @@ declare global {
         prototype: HTMLAppTabsElement;
         new (): HTMLAppTabsElement;
     };
-    interface HTMLMarkTodayElement extends Components.MarkToday, HTMLStencilElement {
-    }
-    var HTMLMarkTodayElement: {
-        prototype: HTMLMarkTodayElement;
-        new (): HTMLMarkTodayElement;
-    };
     interface HTMLElementTagNameMap {
         "app-cal": HTMLAppCalElement;
         "app-home": HTMLAppHomeElement;
         "app-new": HTMLAppNewElement;
+        "app-options": HTMLAppOptionsElement;
         "app-profile": HTMLAppProfileElement;
         "app-root": HTMLAppRootElement;
         "app-tabs": HTMLAppTabsElement;
-        "mark-today": HTMLMarkTodayElement;
     }
 }
 declare namespace LocalJSX {
@@ -102,6 +103,10 @@ declare namespace LocalJSX {
     }
     interface AppNew {
     }
+    interface AppOptions {
+        "_id"?: string;
+        "year"?: number;
+    }
     interface AppProfile {
         "history"?: any;
         "match"?: any;
@@ -112,17 +117,14 @@ declare namespace LocalJSX {
         "_id"?: string;
         "year"?: number;
     }
-    interface MarkToday {
-        "_id"?: string;
-    }
     interface IntrinsicElements {
         "app-cal": AppCal;
         "app-home": AppHome;
         "app-new": AppNew;
+        "app-options": AppOptions;
         "app-profile": AppProfile;
         "app-root": AppRoot;
         "app-tabs": AppTabs;
-        "mark-today": MarkToday;
     }
 }
 export { LocalJSX as JSX };
@@ -132,10 +134,10 @@ declare module "@stencil/core" {
             "app-cal": LocalJSX.AppCal & JSXBase.HTMLAttributes<HTMLAppCalElement>;
             "app-home": LocalJSX.AppHome & JSXBase.HTMLAttributes<HTMLAppHomeElement>;
             "app-new": LocalJSX.AppNew & JSXBase.HTMLAttributes<HTMLAppNewElement>;
+            "app-options": LocalJSX.AppOptions & JSXBase.HTMLAttributes<HTMLAppOptionsElement>;
             "app-profile": LocalJSX.AppProfile & JSXBase.HTMLAttributes<HTMLAppProfileElement>;
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
             "app-tabs": LocalJSX.AppTabs & JSXBase.HTMLAttributes<HTMLAppTabsElement>;
-            "mark-today": LocalJSX.MarkToday & JSXBase.HTMLAttributes<HTMLMarkTodayElement>;
         }
     }
 }

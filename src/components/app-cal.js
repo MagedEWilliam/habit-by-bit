@@ -35,9 +35,9 @@ export class AppCal {
     }
     
     if(this.comp.querySelector('.select.highlight')){
-      document.querySelector('mark-today button').classList.remove('show')
+      document.querySelector('app-options button.today').classList.remove('show')
     }else{
-      document.querySelector('mark-today button').classList.add('show')
+      document.querySelector('app-options button.today').classList.add('show')
     }
   }
 

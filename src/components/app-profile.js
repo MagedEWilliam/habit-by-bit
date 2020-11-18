@@ -17,7 +17,6 @@ export class AppProfile {
 
   
   render() {
-    console.log(this.history)
     if (this.match && this.match.params.name) {
       return (
         <div class="app-profile">

@@ -3,7 +3,8 @@ import { MatchResults, RouterHistory } from '@stencil/router';
 import { get_data } from '../store';
 
 @Component({
-  tag: 'app-home'
+  tag: 'app-home',
+  styleUrl: '../styles/app-home.css'
 })
 export class AppHome {
   @Prop() match;
@@ -20,7 +21,7 @@ export class AppHome {
         {this.match.params._id ?
           [
           <app-cal _id={this.match.params._id} year={this.match.params.year} />,
-          <mark-today _id={this.match.params._id}/>,
+          <app-options _id={this.match.params._id} year={this.match.params.year}/>,
           <app-tabs _id={this.match.params._id} />] 
           : ( !this.goToFirstHabit() ? 
             <app-new/> 

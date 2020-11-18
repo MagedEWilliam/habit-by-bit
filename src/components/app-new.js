@@ -1,4 +1,4 @@
-import { Component, h, State } from '@stencil/core';
+import { Component, h, Element, State } from '@stencil/core';
 
 @Component({
   tag: 'app-new',
@@ -7,19 +7,30 @@ import { Component, h, State } from '@stencil/core';
 
 export class AppNew {
   @State() habit_name = '';
+  @Element() comp;
 
   goOnEnter(e) {
     if(e.keyCode === 13){
-      window.location.href = '/' + this.habit_name;
+      this.comp.querySelector('.start').click();
     }
   } 
+  componentDidRender(){
+    // something to do with lazy loading
+    setTimeout( ()=>{
+      this.comp.querySelector('.newhabit').focus()
+    }, 1, this)
+  }
   render() {
     return (<div class="app-new">
-      <div class="form">
-        <label for="newhabit">Habit Name:</label><br/>
-        <input class="newhabit" name="newhabit" placeholder="Drinking water..." type="text" onInput={e=> this.habit_name = e.target.value} value={this.habit_name} onKeyPress={ e=> this.goOnEnter(e)} ></input><br/><br/>
-        <a class="start" href={'/'+this.habit_name}>Create</a>
-      </div>
+      <form class="form">
+        <label for="newhabit">Habit Name:</label>
+        <input class="newhabit" name="newhabit" placeholder="Drinking water..." type="text" onInput={e=> this.habit_name = e.target.value} value={this.habit_name} onKeyPress={ e=> this.goOnEnter(e)} />
+        <br/>
+        <br/>
+        <stencil-route-link url={'/'+this.habit_name}>
+          <button class="start">Create</button>
+        </stencil-route-link>
+      </form>
     </div>)
   }
 }

@@ -1,27 +1,24 @@
-mark-today{
+app-options{
     display: flex;
     flex-direction: row;
     text-align: center;
     justify-content: center;
 }
-mark-today button{
+app-options button{
     border-radius: 50px;
     background: transparent;
     color: #fff;
     border: unset;
-    padding: 8px 16px;
+    padding: 8px;
     font-family: 'Coiny', cursive;
     font-size: 16px;
     opacity: 0;
 }
-mark-today button.show{
+app-options button.option{
     opacity: 1;
-    animation: blink 1.2s steps(4, start) infinite;
 }
 
-mark-today button:hover{
-    background: rgba(250,250,250,.3);
-}
-mark-today button:active{
-    background: rgba(250,250,250,.1);
+app-options button.show{
+    opacity: 1;
+    animation: blink 1.2s steps(4, start) infinite;
 }

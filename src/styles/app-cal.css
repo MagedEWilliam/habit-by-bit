@@ -37,14 +37,14 @@ cal-month .select:after{
     animation: blink 1.2s steps(4, start) infinite;
 }
 cal-month .select{
-    color: aqua;
+    color: white;
     -webkit-text-security: none;
 }
 cal-month .highlight{
     border-radius: 5px;
     font-size: 13px;
     -webkit-text-security: none;
-    color: aqua
+    color: white
 }
 
 cal-month .highlight.select:after{

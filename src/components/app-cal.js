@@ -6,6 +6,8 @@ import { get_data, remove_date, insert_date } from '../store';
   styleUrl: '../styles/app-cal.css'
 })
 export class AppCal {
+  // TODO: try to not pass any state to prevent rerender
+  
   @Prop() _id = '0';
   @Prop() name = '⛵️';
   @Prop() color = '#00ffff';
@@ -68,10 +70,11 @@ export class AppCal {
   }
 
   render() {
+    console.log('i souldnt rerender much')
     return (
       <div class="year" year={this.year.toString()}>
         <cal-month name={'jan'} num={1} days={31} />
-        <cal-month name={'feb'} num={2} days={29} />
+        <cal-month name={'feb'} num={2} days={this.isLeapYear(this.year)? 29:28} />
         <cal-month name={'mar'} num={3} days={31} />
         <cal-month name={'apr'} num={4} days={30} />
         <cal-month name={'may'} num={5} days={31} />

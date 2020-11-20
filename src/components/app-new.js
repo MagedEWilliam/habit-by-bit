@@ -9,17 +9,6 @@ export class AppNew {
   @State() habit_name = '';
   @Element() comp;
 
-  goOnEnter(e) {
-    if(e.keyCode === 13){
-      this.comp.querySelector('.start').click();
-    }
-  } 
-  componentDidRender(){
-    // something to do with lazy loading
-    setTimeout( ()=>{
-      this.comp.querySelector('.newhabit').focus()
-    }, 1, this)
-  }
   render() {
     return (<div class="app-new">
       <form class="form">
@@ -32,5 +21,17 @@ export class AppNew {
         </stencil-route-link>
       </form>
     </div>)
+  }
+
+  goOnEnter(e) {
+    if(e.keyCode === 13){
+      this.comp.querySelector('.start').click();
+    }
+  } 
+  componentDidRender(){
+    // something to do with lazy loading
+    setTimeout( ()=>{
+      this.comp.querySelector('.newhabit').focus()
+    }, 1, this)
   }
 }

@@ -23,6 +23,7 @@ export namespace Components {
     interface AppOptions {
         "_id": string;
         "go": any;
+        "show": boolean;
         "year": number;
     }
     interface AppProfile {
@@ -30,6 +31,10 @@ export namespace Components {
         "match": any;
     }
     interface AppRoot {
+    }
+    interface AppShare {
+        "_id": string;
+        "year": number;
     }
     interface AppTabs {
         "_id": string;
@@ -78,6 +83,12 @@ declare global {
         prototype: HTMLAppRootElement;
         new (): HTMLAppRootElement;
     };
+    interface HTMLAppShareElement extends Components.AppShare, HTMLStencilElement {
+    }
+    var HTMLAppShareElement: {
+        prototype: HTMLAppShareElement;
+        new (): HTMLAppShareElement;
+    };
     interface HTMLAppTabsElement extends Components.AppTabs, HTMLStencilElement {
     }
     var HTMLAppTabsElement: {
@@ -97,6 +108,7 @@ declare global {
         "app-options": HTMLAppOptionsElement;
         "app-profile": HTMLAppProfileElement;
         "app-root": HTMLAppRootElement;
+        "app-share": HTMLAppShareElement;
         "app-tabs": HTMLAppTabsElement;
         "cal-month": HTMLCalMonthElement;
     }
@@ -119,6 +131,7 @@ declare namespace LocalJSX {
     interface AppOptions {
         "_id"?: string;
         "go"?: any;
+        "show"?: boolean;
         "year"?: number;
     }
     interface AppProfile {
@@ -126,6 +139,10 @@ declare namespace LocalJSX {
         "match"?: any;
     }
     interface AppRoot {
+    }
+    interface AppShare {
+        "_id"?: string;
+        "year"?: number;
     }
     interface AppTabs {
         "_id"?: string;
@@ -143,6 +160,7 @@ declare namespace LocalJSX {
         "app-options": AppOptions;
         "app-profile": AppProfile;
         "app-root": AppRoot;
+        "app-share": AppShare;
         "app-tabs": AppTabs;
         "cal-month": CalMonth;
     }
@@ -157,6 +175,7 @@ declare module "@stencil/core" {
             "app-options": LocalJSX.AppOptions & JSXBase.HTMLAttributes<HTMLAppOptionsElement>;
             "app-profile": LocalJSX.AppProfile & JSXBase.HTMLAttributes<HTMLAppProfileElement>;
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
+            "app-share": LocalJSX.AppShare & JSXBase.HTMLAttributes<HTMLAppShareElement>;
             "app-tabs": LocalJSX.AppTabs & JSXBase.HTMLAttributes<HTMLAppTabsElement>;
             "cal-month": LocalJSX.CalMonth & JSXBase.HTMLAttributes<HTMLCalMonthElement>;
         }

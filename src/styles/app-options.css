@@ -13,12 +13,33 @@ app-options button{
     font-family: 'Coiny', cursive;
     font-size: 16px;
     opacity: 0;
+    display: none;
 }
-app-options button.option{
+app-options a{
+    text-decoration: none;
+}
+
+app-options .option{
+    display: block;
     opacity: 1;
 }
 
-app-options button.show{
+app-options .hide{
+    opacity: 0;
+    display: none;
+}
+app-options .show{
+    display: block;
     opacity: 1;
     animation: blink 1.2s steps(4, start) infinite;
+}
+
+app-options #copy{
+    width: 0px;
+    height: 0px;
+    border: unset;
+    color: transparent;
+    background: transparent;
+    position: absolute;
+    z-index: -1;
 }

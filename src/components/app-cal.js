@@ -16,6 +16,26 @@ export class AppCal {
   @Prop() year = (new Date()).getFullYear()
   @Element() comp;
 
+  render() {
+    console.log('i souldnt rerender much')
+    return (
+      <div class="year" year={this.year.toString()}>
+        <cal-month name={'jan'} num={1} days={31} />
+        <cal-month name={'feb'} num={2} days={this.isLeapYear(this.year)? 29:28} />
+        <cal-month name={'mar'} num={3} days={31} />
+        <cal-month name={'apr'} num={4} days={30} />
+        <cal-month name={'may'} num={5} days={31} />
+        <cal-month name={'jun'} num={6} days={30} />
+        <cal-month name={'jul'} num={7} days={31} />
+        <cal-month name={'aug'} num={8} days={31} />
+        <cal-month name={'sep'} num={9} days={30} />
+        <cal-month name={'oct'} num={10} days={31} />
+        <cal-month name={'nov'} num={11} days={30} />
+        <cal-month name={'dec'} num={12} days={31} />
+    </div>
+    );
+  }
+  
   isLeapYear(year){
     return (year % 100 === 0) ? (year % 400 === 0) : (year % 4 === 0);
   }
@@ -37,9 +57,9 @@ export class AppCal {
     }
     
     if(this.comp.querySelector('.select.highlight')){
-      document.querySelector('app-options button.today').classList.remove('show')
+      document.querySelector('app-options').show = false;
     }else{
-      document.querySelector('app-options button.today').classList.add('show')
+      document.querySelector('app-options').show = true;
     }
   }
 
@@ -67,25 +87,5 @@ export class AppCal {
     this.comp.querySelectorAll('.day').forEach(day=>{
       day.removeEventListener('click', this.handleDayClick.bind(this), true )
     })
-  }
-
-  render() {
-    console.log('i souldnt rerender much')
-    return (
-      <div class="year" year={this.year.toString()}>
-        <cal-month name={'jan'} num={1} days={31} />
-        <cal-month name={'feb'} num={2} days={this.isLeapYear(this.year)? 29:28} />
-        <cal-month name={'mar'} num={3} days={31} />
-        <cal-month name={'apr'} num={4} days={30} />
-        <cal-month name={'may'} num={5} days={31} />
-        <cal-month name={'jun'} num={6} days={30} />
-        <cal-month name={'jul'} num={7} days={31} />
-        <cal-month name={'aug'} num={8} days={31} />
-        <cal-month name={'sep'} num={9} days={30} />
-        <cal-month name={'oct'} num={10} days={31} />
-        <cal-month name={'nov'} num={11} days={30} />
-        <cal-month name={'dec'} num={12} days={31} />
-    </div>
-    );
   }
 }

@@ -12,7 +12,7 @@ export class CalMonth {
   render() {
     return (<span class="month" month={this.num}>
       <p class="month-title" fill="#CECECE">{this.name}</p>
-  {[ ...Array(this.days).keys() ].map(k=><div class="day" id={`date-${this.num}-${k}`}>{String(k).padStart(2, "0")}</div>)}
-    </span>)
+      {[ ...Array(this.days).keys() ].map(k=><div class="day" id={`date-${this.num}-${k}`}>{String(k).padStart(2, "0")}</div>)}
+      </span>)
   }
 }

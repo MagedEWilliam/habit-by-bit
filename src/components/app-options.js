@@ -6,18 +6,27 @@ import { get_data, deleteByID } from '../store';
   styleUrl:'../styles/app-options.css'
 })
 export class AppOptions {
-  @State() show = false;
+  @Prop() show = false;
   @State() day = (new Date()).getDate();
   @State() month = (new Date()).getMonth()+1
   @Prop() year = (new Date()).getFullYear()
   @Prop() _id = '0';
   @Prop() go;
+  
+  render() {
+    return [
+      <button class="option" onClick={e=> this.deleteByID()}>[ Delete ]</button>,
+      <stencil-route-link url="/new-habit"><button class="option">[ New ]</button></stencil-route-link>,
+      <button class={{'show':this.show, 'today': true}} onClick={this.handleTodayClick.bind(this)}>[ Mark today? ]</button>,
+      <app-share _id={this._id} year={this.year} class={{'hide':this.show, 'option': true}} />
+    ];
+  }
 
   getNextHabit(){
     let index = 0;
     const data = Object.keys(get_data());
     data.map((d, idx)=> (d == this._id)? index = idx : null )
-
+    
     if(index+1 >= data.length ){
       index = 0;
     }else{
@@ -58,11 +67,4 @@ export class AppOptions {
     }
   }
 
-  render() {
-    return [
-      <button class="option" onClick={e=> this.deleteByID()}>[ Delete ]</button>,
-      <stencil-route-link url="/new-habit"><button class="option">[ New ]</button></stencil-route-link>,
-      <button class={{'show':this.show, 'today': true}} onClick={this.handleTodayClick.bind(this)}>[ Mark today? ]</button>,
-    ];
-  }
 }

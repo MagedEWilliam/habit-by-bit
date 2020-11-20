@@ -34,6 +34,8 @@ cal-month .select:after{
     position: absolute;
     font-size: 32px;
     color: white;
+    margin-bottom: 3px;
+    margin-left: -1px;
     animation: blink 1.2s steps(4, start) infinite;
 }
 cal-month .select{

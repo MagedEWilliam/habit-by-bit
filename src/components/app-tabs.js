@@ -13,14 +13,6 @@ export class AppTabs {
 
   newHabit = ()=> true
 
-  componentDidRender(){
-    this.comp.querySelectorAll('.tab').forEach(link=>{
-      if(this._id == link.innerHTML){
-        link.scrollIntoView({behavior: "smooth", block: "center", inline: "center"})
-      }
-    })
-  }
-
   render() {
     const data = Object.values( get_data() )
     
@@ -40,5 +32,13 @@ export class AppTabs {
     </stencil-route-link>
     </div>
     </div>)
+  }
+
+  componentDidRender(){
+    this.comp.querySelectorAll('.tab').forEach(link=>{
+      if(this._id == link.innerHTML){
+        link.scrollIntoView({behavior: "smooth", block: "center", inline: "center"})
+      }
+    })
   }
 }

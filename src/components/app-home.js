@@ -10,15 +10,6 @@ export class AppHome {
   @Prop() match;
   @Prop() history;
 
-  goToFirstHabit(){
-    const data = Object.values( get_data() )
-    return data.length === 0 ?  null : data[0].id
-  }
-
-  proxyHistory(url){
-    this.history.push(url)
-  }
-
   render() {
     return (
       <div class="app-home">
@@ -33,5 +24,14 @@ export class AppHome {
         }
       </div>
     );
+  }
+
+  goToFirstHabit(){
+    const data = Object.values( get_data() )
+    return data.length === 0 ?  null : data[0].id
+  }
+
+  proxyHistory(url){
+    this.history.push(url)
   }
 }

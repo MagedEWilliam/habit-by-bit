@@ -7,14 +7,6 @@ import { MatchResults, RouterHistory } from '@stencil/router';
 export class AppProfile {
   @Prop() match;
   @Prop() history;
-
-  normalize(name) {
-    if (name) {
-      return name.substr(0, 1).toUpperCase() + name.substr(1).toLowerCase();
-    }
-    return '';
-  }
-
   
   render() {
     if (this.match && this.match.params.name) {
@@ -29,5 +21,12 @@ export class AppProfile {
         </div>
       );
     }
+  }
+
+  normalize(name) {
+    if (name) {
+      return name.substr(0, 1).toUpperCase() + name.substr(1).toLowerCase();
+    }
+    return '';
   }
 }

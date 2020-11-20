@@ -41,4 +41,15 @@ workbox.routing.registerRoute(
     })
   );
 
+  workbox.routing.registerRoute(
+    /^https:\/\/fonts\.gstatic\.com/,
+    new workbox.strategies.CacheFirst({
+      cacheName: 'app-css',
+      cacheExpiration: {
+        maxAgeSeconds: 60 * 60 * 24 * 360
+      },
+      cacheableResponse: {statuses: [200]}
+    })
+  );
+
 workbox.precaching.precacheAndRoute(self.__WB_MANIFEST);

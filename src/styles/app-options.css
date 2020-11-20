@@ -40,7 +40,7 @@ app-options a{
 }
 
 app-options .option{
-    display: block;
+    display: flex;
     opacity: 1;
 }
 
@@ -62,5 +62,5 @@ app-options #copy{
     background: transparent;
     position: absolute;
     z-index: -1;
-    padding: 0;
+    padding: 1px;
 }

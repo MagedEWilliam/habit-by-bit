@@ -7,37 +7,26 @@ import { get_data } from '../store';
 export class CalMonth {
   @Prop() _id = '0';
   @Prop() year = (new Date()).getFullYear();
+  @State() disable = true
   @Element() comp
 
   render() {
     return [
-    <textarea id="copy" ></textarea>,
-      <button class="option" onClick={this.share.bind(this)}>[ Share ]</button>
+      <textarea id="copy" ></textarea>,
+      <button class="option" onClick={this.share.bind(this)} disabled={this.disable}>[ Share ]</button>,
+      <button class="option" onClick={this.shareCSV.bind(this)} disabled={this.disable}>[ Share CSV ]</button>,
     ]
   }
 
-  @Method()
-  async share (){
-    const month_names = ['jan','fab','mar','apr','may','jun','jul','aug','sep','oct','nov','dec']
-    const year= [];
-    year.push([this._id,'','','','','','','','','','','','\n'])
-    year.push(month_names)
-
-    let month=1;
-    let day=1;
-
-    for(; day <= 31 ;day++){
-      year.push(Array(12).fill(''))
-      year[day][12] = '\n'
-    }
-
+  componentDidRender(){
     const data = get_data(this._id, this.year);
+    if(data.length > 1){
+      this.disable = false;
+    }
+  }
 
-    data.map(date=>{
-      const day = Number(date.replace(/[0-9]*-/, ''))
-      const month = Number(date.replace(/-[0-9]*/, ''))
-      year[day+2][month-1] ='*'
-    })
+  @Method()
+  async shareDialog(year){
 
     try{
       if(navigator.clipboard){
@@ -67,7 +56,54 @@ export class CalMonth {
     } catch(err) {
       console.log(err)
     }
+  }
 
+  shareCSV (){
+    const month_names = ['jan','fab','mar','apr','may','jun','jul','aug','sep','oct','nov','dec']
+    const year= [];
+    year.push([this._id,'','','','','','','','','','','','\n'])
+    year.push(month_names)
+
+    let month=1;
+    let day=1;
+
+    for(; day <= 31 ;day++){
+      year.push(Array(12).fill(''))
+      year[day][12] = '\n'
+    }
+
+    const data = get_data(this._id, this.year);
+
+    data.map(date=>{
+      const day = Number(date.replace(/[0-9]*-/, ''))
+      const month = Number(date.replace(/-[0-9]*/, ''))
+      year[day+2][month-1] ='x'
+    })
+    this.shareDialog(year)
+    return year;
+  }
+
+
+  share (){
+    const year= [];
+    const data = get_data(this._id, this.year);
+    
+    year.push(`I did ${data.length-1} days of ${this._id} this year.\n #habit_by_bit\n#${this.year}_habit_tracking\nhttp://habit-by-bit.netlify.app\n`)
+    let month=1;
+    let day=1;
+    
+    for(; day <= 31 ;day++){
+      year.push(Array(12).fill('-'))
+      year[day][12] = '\n'
+    }
+    
+    data.map(date=>{
+      const day = Number(date.replace(/[0-9]*-/, ''))
+      const month = Number(date.replace(/-[0-9]*/, ''))
+      year[day+2][month-1] ='x'
+    })
+
+    this.shareDialog(year.toString().replace(/,/g,''))
     
     return year;
   }

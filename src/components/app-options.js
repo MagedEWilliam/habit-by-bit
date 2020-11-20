@@ -47,11 +47,6 @@ export class AppOptions {
     }
   }
 
-  @Watch('_id')
-  hideReset(){
-    this.show = true;
-  }
-
   deleteByID(){
     const deleteit = confirm(`Delete ${this._id}`)
     if(deleteit){

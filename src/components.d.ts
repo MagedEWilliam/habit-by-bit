@@ -34,6 +34,7 @@ export namespace Components {
     }
     interface AppShare {
         "_id": string;
+        "share": () => Promise<any[][]>;
         "year": number;
     }
     interface AppTabs {

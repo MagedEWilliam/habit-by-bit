@@ -1,4 +1,4 @@
-import { Component, h, Prop, Element, State } from '@stencil/core';
+import { Component, h, Prop, Element, State, Method } from '@stencil/core';
 import { get_data } from '../store';
 
 @Component({
@@ -12,11 +12,12 @@ export class CalMonth {
   render() {
     return [
     <textarea id="copy" ></textarea>,
-      <button class="option" onClick={this.share.bind(this)}>[ Copy ]</button>
+      <button class="option" onClick={this.share.bind(this)}>[ Share ]</button>
     ]
   }
 
-  share(){
+  @Method()
+  async share (){
     const month_names = ['jan','fab','mar','apr','may','jun','jul','aug','sep','oct','nov','dec']
     const year= [];
     year.push([this._id,'','','','','','','','','','','','\n'])
@@ -38,17 +39,34 @@ export class CalMonth {
       year[day+2][month-1] ='*'
     })
 
-    navigator.clipboard.writeText(year).catch(e =>{
-      console.log(e)
-      this.toCopy = year;
-      const cp = this.comp.querySelector('#copy');
-      cp.innerHTML = year;
-      cp.focus();
-      cp.select();
-      cp.setSelectionRange(0, 99999);
-      document.execCommand('copy');
-    } );
-
+    try{
+      if(navigator.clipboard){
+        navigator.clipboard.writeText(year)
+      }else{
+        this.toCopy = year;
+        const cp = this.comp.querySelector('#copy');
+        cp.innerHTML = year;
+        cp.focus();
+        cp.select();
+        cp.setSelectionRange(0, 99999);
+        document.execCommand('copy');
+      }
+    }
+    catch(err) {
+      console.log(err)
+    }
+    
+    try {
+      if(navigator.share){
+        await navigator.share({
+          title: 'Habit by bit',
+          text: year,
+          url: 'https://habit-by-bit.netlify.com',
+        })
+      }
+    } catch(err) {
+      console.log(err)
+    }
 
     
     return year;

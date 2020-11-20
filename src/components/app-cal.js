@@ -17,7 +17,6 @@ export class AppCal {
   @Element() comp;
 
   render() {
-    console.log('i souldnt rerender much')
     return (
       <div class="year" year={this.year.toString()}>
         <cal-month name={'jan'} num={1} days={31} />

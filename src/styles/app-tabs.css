@@ -30,6 +30,8 @@ app-tabs stencil-route-link a{
   position: relative;
   padding: 8px 0px;
 }
+app-tabs stencil-route-link a.link-active,
+app-tabs stencil-route-link a.link-active a,
 app-tabs stencil-route-link a.link-active .tab{
   color: var(--secondary-color);
 }

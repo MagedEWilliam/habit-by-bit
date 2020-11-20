@@ -19,9 +19,21 @@ cal-month .month-title{
     font-weight: lighter;
     font-size: 13px;
 }
+cal-month .day.reveal{
+    opacity: 1;
+}
+cal-month .day.reveal-font-level3{
+    font-size: 4px;
+}
+cal-month .day.reveal-font-level2{
+    font-size: 3px;
+}
+cal-month .day.reveal-font-level1{
+    font-size: 2px;
+}
 cal-month .day{
     font-family: 'Coiny', cursive;
-    font-size: 2px;
+    font-size: 5px;
     height: calc(100vh / 33 - 2px);
     max-height: 25px;
     display: flex;
@@ -30,9 +42,6 @@ cal-month .day{
     -webkit-text-security: square;
     opacity: 0;
 }
-cal-month .day.reveal{
-    opacity: 1;
-}
 cal-month .select:after{
     content: '⛶';
     position: absolute;
@@ -40,7 +49,7 @@ cal-month .select:after{
     color: var(--secondary-color);
     margin-bottom: 3px;
     margin-left: -1px;
-    animation: blink 1.2s steps(4, start) infinite;
+    animation: blink 1.2s infinite alternate;
 }
 cal-month .select{
     color: var(--secondary-color);
@@ -48,7 +57,7 @@ cal-month .select{
 }
 cal-month .highlight{
     border-radius: 5px;
-    font-size: 13px;
+    font-size: 13px !important;
     -webkit-text-security: none;
     color: var(--secondary-color)
 }
@@ -57,9 +66,7 @@ cal-month .highlight.select:after{
     opacity: .5;
     animation: unset
 }
-cal-month .twitch{
 
-}
 
 @keyframes blink{
     to {

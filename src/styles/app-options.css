@@ -51,7 +51,7 @@ app-options .hide{
 app-options .show{
     display: block;
     opacity: 1;
-    animation: blink 1.2s steps(4, start) infinite;
+    animation: blink 1.2s infinite alternate;
 }
 
 app-options #copy{

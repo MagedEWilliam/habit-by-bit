@@ -2,6 +2,11 @@ app-new .app-new{
   width: 100vw;
   height: 100vh;
   display: grid;
+  opacity: 0;
+  transition: opacity 500ms;
+}
+app-new .app-new.reveal{
+  opacity: 1;
 }
 app-new .form{
   max-width: 300px;
@@ -18,17 +23,21 @@ app-new .newhabit{
   padding: 0px 8px;
   margin: 4px auto;
 }
-app-new .start{
-  background-color: rgba(250,250,250,.2);
-  padding: 8px 16px;
-  border-radius: 5px;
-  color: #fff;
-  text-decoration: none;
-  border: none;
+app-new a{
+  color: var(--secondary-color);
 }
-app-new .start:hover{
-  background-color: rgba(250,250,250,.3);
+app-new button{
+  cursor: pointer;
+  background: transparent;
+  color: var(--secondary-color);
+  border: unset;
+  padding: 8px;
+  font-size: 16px;
+  transition: all 300ms ease-in-out;
 }
-app-new .start:active{
-  background-color: rgba(250,250,250,.1);
+app-new button:hover{
+  opacity: 0.8;
+}
+app-new button:active{
+  opacity: 0.5;
 }

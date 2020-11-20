@@ -15,10 +15,12 @@ export class AppOptions {
   
   render() {
     return [
-      <button class="option" onClick={e=> this.deleteByID()}>[ Delete ]</button>,
-      <stencil-route-link url="/new-habit"><button class="option">[ New ]</button></stencil-route-link>,
-      <button class={{'show':this.show, 'today': true}} onClick={this.handleTodayClick.bind(this)}>[ Mark today? ]</button>,
-      <app-share _id={this._id} year={this.year} class={{'hide':this.show, 'option': true}} />
+      <div class="options-wrapper">
+        <button class={{'show':this.show, 'today': true}} onClick={this.handleTodayClick.bind(this)}>[ Mark today? ]</button>
+        <stencil-route-link url="/new-habit"><button class="option">[ New ]</button></stencil-route-link>
+        <app-share _id={this._id} year={this.year} class={{'option': true}} />
+        <button class="option" onClick={e=> this.deleteByID()}>[ Delete ]</button>
+      </div>
     ];
   }
 

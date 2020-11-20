@@ -31,7 +31,7 @@ app-tabs stencil-route-link a{
   padding: 8px 0px;
 }
 app-tabs stencil-route-link a.link-active .tab{
-  color: rgba(250,250,250, 1);
+  color: var(--secondary-color);
 }
 app-tabs stencil-route-link a .tab:before{
   content: '[';
@@ -46,10 +46,10 @@ app-tabs stencil-route-link a .tab:after{
 app-tabs stencil-route-link a.link-active .tab:before{
   content: '[';
   position: absolute;
-  color: rgba(250,250,250, 1);
+  color: var(--secondary-color);
 }
 app-tabs stencil-route-link a.link-active .tab:after{
   content: ']';
-  color: rgba(250,250,250, 1);
+  color: var(--secondary-color);
   position: absolute;
 }

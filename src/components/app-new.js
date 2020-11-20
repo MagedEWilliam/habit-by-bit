@@ -17,10 +17,14 @@ export class AppNew {
         <br/>
         <br/>
         <stencil-route-link url={'/'+this.habit_name}>
-          <button class="start">Create</button>
+          <button class="start">[ Create ]</button>
         </stencil-route-link>
       </form>
     </div>)
+  }
+
+  componentDidLoad(){
+    this.comp.querySelector('.app-new').classList.add('reveal');
   }
 
   goOnEnter(e) {

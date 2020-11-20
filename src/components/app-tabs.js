@@ -22,9 +22,10 @@ export class AppTabs {
         if(this._id == d.id){
           this.newHabit = ()=> false;
         }
-      return(<stencil-route-link url={'/'+d.id}>
-        <a class="tab">{d.name}</a>
-      </stencil-route-link>)
+      return(
+        <stencil-route-link url={'/'+d.id}>
+          <a class="tab">{d.name}</a>
+        </stencil-route-link>)
       })
     }
     <stencil-route-link style={{'display': !this.newHabit() && 'none' }} url={'/'+this._id}>

@@ -28,25 +28,29 @@ cal-month .day{
     flex-direction: column;
     justify-content: center;
     -webkit-text-security: square;
+    opacity: 0;
+}
+cal-month .day.reveal{
+    opacity: 1;
 }
 cal-month .select:after{
     content: '⛶';
     position: absolute;
     font-size: 32px;
-    color: white;
+    color: var(--secondary-color);
     margin-bottom: 3px;
     margin-left: -1px;
     animation: blink 1.2s steps(4, start) infinite;
 }
 cal-month .select{
-    color: white;
+    color: var(--secondary-color);
     -webkit-text-security: none;
 }
 cal-month .highlight{
     border-radius: 5px;
     font-size: 13px;
     -webkit-text-security: none;
-    color: white
+    color: var(--secondary-color)
 }
 
 cal-month .highlight.select:after{

@@ -1,3 +1,5 @@
+[Click Here to try it](http://habit-by-bit.netlify.app/)
+
 # Stencil App Starter
 
 Stencil is a compiler for building fast web apps using Web Components.

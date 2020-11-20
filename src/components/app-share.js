@@ -58,7 +58,7 @@ export class CalMonth {
     }
   }
 
-  shareCSV (){
+  shareCSV (e){
     const month_names = ['jan','fab','mar','apr','may','jun','jul','aug','sep','oct','nov','dec']
     const year= [];
     year.push([this._id,'','','','','','','','','','','','\n'])
@@ -80,11 +80,14 @@ export class CalMonth {
       year[day+2][month-1] ='x'
     })
     this.shareDialog(year)
+
+    e.target.classList.add('done')
+    setTimeout(e=> e.classList.remove('done'), 1000, e.target)
     return year;
   }
 
 
-  share (){
+  share (e){
     const year= [];
     const data = get_data(this._id, this.year);
     
@@ -105,6 +108,8 @@ export class CalMonth {
 
     this.shareDialog(year.toString().replace(/,/g,''))
     
+    e.target.classList.add('done')
+    setTimeout(e=> e.classList.remove('done'), 1000, e.target)
     return year;
   }
 }

@@ -20,7 +20,7 @@ export class CalMonth {
 
   componentDidRender(){
     const data = get_data(this._id, this.year);
-    if(data.length > 1){
+    if(data == null || data.length > 1){
       this.disable = false;
     }
   }

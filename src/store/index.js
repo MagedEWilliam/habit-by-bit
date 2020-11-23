@@ -56,11 +56,11 @@ const set_data = (id='0', year="2020", date="1-1", method='remove') => {
         alldata[id].color = '#00FFFF'
         alldata[id].years = {}
       }
-      if(!alldata[id].years[year]){
+      if(!alldata[id].years[year] && date != null){
         alldata[id].years[year] = [date]
       }
       let getYearData = get_data(id, year)
-      if(method == 'insert'){
+      if(method == 'insert' && date != null){
         alldata[id].years[year].push(date);
       }else if(method == 'remove'){
         alldata[id].years[year] = getYearData.filter(d => d != date);

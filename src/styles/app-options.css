@@ -61,6 +61,7 @@ app-options #copy{
     color: transparent;
     background: transparent;
     position: absolute;
+    left: 0px;
     z-index: -1;
     padding: 1px;
 }

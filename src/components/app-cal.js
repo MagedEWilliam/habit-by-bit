@@ -9,7 +9,7 @@ export class AppCal {
   // TODO: try to not pass any state to prevent rerender
   
   @Prop() _id = '0';
-  @Prop() name = '⛵️';
+  @Prop() name = '0';
   @Prop() color = '#00ffff';
   @Prop() day = (new Date()).getDate()
   @Prop() month = (new Date()).getMonth()+1
@@ -65,7 +65,9 @@ export class AppCal {
   setHiglightOnCal(data){
     if(data && Object.keys(data).length !== 0){
       data.map(date=>{
-        this.comp.querySelector(`#date-${date}`).classList.add('highlight')
+        if(data[0] != null) {
+          this.comp.querySelector(`#date-${date}`).classList.add('highlight')
+        }
       })
     }
   }

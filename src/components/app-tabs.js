@@ -1,5 +1,5 @@
 import { Component, h, Prop, Element } from '@stencil/core';
-import { get_data } from '../store';
+import { get_data, insert_date } from '../store';
 
 @Component({
   tag: 'app-tabs',
@@ -13,27 +13,33 @@ export class AppTabs {
 
   newHabit = ()=> true
 
+  componentWillRender(){
+    const data = Object.values( get_data() )
+    let newItem = true;
+    data.map(d=> {
+      if(this._id == d.id){
+        newItem = false;
+      }
+    })
+
+    if(newItem){
+      insert_date(this._id, this.year, null)
+    }
+  }
   render() {
     const data = Object.values( get_data() )
     
     return (<div class="tabs">
       <div class="tab-wrapper">
-      {data.map(d=> {
-        if(this._id == d.id){
-          this.newHabit = ()=> false;
-        }
-      return(
+      {data.map(d=> (
         <stencil-route-link url={'/'+d.id}>
           <a class="tab">{d.name}</a>
         </stencil-route-link>)
-      })
-    }
-    <stencil-route-link style={{'display': !this.newHabit() && 'none' }} url={'/'+this._id}>
-      <a class="tab">{decodeURIComponent(this._id)}</a>
-    </stencil-route-link>
+      )}
     </div>
     </div>)
   }
+
 
   componentDidRender(){
     this.comp.querySelectorAll('.tab').forEach(link=>{

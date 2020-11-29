@@ -1,14 +1,13 @@
 app-tabs .tabs{
+  align-items: center;
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  min-height: 32px;
-  max-width: 100vw;
-  margin: auto;
-  overflow: auto;
   font-family: 'Coiny', cursive;
+  justify-content: center;
+  margin: auto;
+  max-width: 100vw;
+  min-height: 32px;
+  overflow: auto;
   
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -16,6 +15,7 @@ app-tabs .tabs{
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  width: 100%;
 }
 app-tabs .tab-wrapper{
   display: flex;
@@ -24,11 +24,11 @@ app-tabs stencil-route-link{
   min-width: fit-content;
 }
 app-tabs stencil-route-link a{
-  margin: 0 8px;
   color: rgba(250,250,250,0.5);
-  text-decoration: none;
-  position: relative;
+  margin: 0 8px;
   padding: 8px 0px;
+  position: relative;
+  text-decoration: none;
 }
 app-tabs stencil-route-link a.link-active,
 app-tabs stencil-route-link a.link-active a,
@@ -37,8 +37,8 @@ app-tabs stencil-route-link a.link-active .tab{
 }
 app-tabs stencil-route-link a .tab:before{
   content: '[';
-  position: absolute;
   left: -10px;
+  position: absolute;
 }
 app-tabs stencil-route-link a .tab:after{
   content: ']';
@@ -46,12 +46,12 @@ app-tabs stencil-route-link a .tab:after{
   right: -10px;
 }
 app-tabs stencil-route-link a.link-active .tab:before{
+  color: var(--secondary-color);
   content: '[';
   position: absolute;
-  color: var(--secondary-color);
 }
 app-tabs stencil-route-link a.link-active .tab:after{
-  content: ']';
   color: var(--secondary-color);
+  content: ']';
   position: absolute;
 }

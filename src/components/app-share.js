@@ -99,23 +99,23 @@ export class CalMonth {
     const year= [];
     const data = get_data(this._id, this.year);
     
-    year.push(`I did ${data.length-1} days of ${this._id} this year.\n #habit_by_bit\n#${this.year}_habit_tracking\nhttp://habit-by-bit.netlify.app\n`)
+    year.push(`I did ${data.length-1} days of ${this._id} this year.\n#${this.year}_habit_tracking\n#habit_by_bit\nhttp://habit-by-bit.netlify.app\n`)
     let month=1;
     let day=1;
     
-    for(; day <= 30 ;day++){
+    for(; day <= 31 ;day++){
       year.push(Array(12).fill('. '))
       year[day][12] = '\n'
       
       if(day >= fab){
-        year[day].map( (d, idx)=> (month_days[idx] <= day) && (year[day][idx] = '  ') )
+        year[day].map( (d, idx)=> (month_days[idx] < day) && (year[day][idx] = '  ') )
       }
     }
     
     data.map(date=>{
       const day = Number(date.replace(/[0-9]*-/, ''))
       const month = Number(date.replace(/-[0-9]*/, ''))
-      year[day][month-1] ='o '
+      year[day+1][month-1] ='o '
     })
 
     this.shareDialog(year.toString().replace(/,/g,''))

@@ -13,8 +13,8 @@ export class CalMonth {
   render() {
     return [
       <textarea id="copy" ></textarea>,
-      <button class="option" onClick={this.share.bind(this)} disabled={this.disable}>[ Share ]</button>,
-      <button class="option" onClick={this.shareCSV.bind(this)} disabled={this.disable}>[ Share CSV ]</button>,
+      <button class="option" onClick={this.share.bind(this)} disabled={this.disable}>[ Copy ]</button>,
+      <button class="option" onClick={this.shareCSV.bind(this)} disabled={this.disable}>[ Copy CSV ]</button>,
     ]
   }
 
@@ -57,8 +57,14 @@ export class CalMonth {
       console.log(err)
     }
   }
+  
+  isLeapYear(year){
+    return (year % 100 === 0) ? (year % 400 === 0) : (year % 4 === 0);
+  }
 
   shareCSV (e){
+    const fab = this.isLeapYear(this.year) ? 28 : 29;
+    const month_days = [31,fab,31,30,31,30,31,31,30,31,30,31]
     const month_names = ['jan','fab','mar','apr','may','jun','jul','aug','sep','oct','nov','dec']
     const year= [];
     year.push([this._id,'','','','','','','','','','','','\n'])
@@ -88,6 +94,8 @@ export class CalMonth {
 
 
   share (e){
+    const fab = this.isLeapYear(this.year) ? 29 : 28;
+    const month_days = [31,fab,31,30,31,30,31,31,30,31,30,31]
     const year= [];
     const data = get_data(this._id, this.year);
     
@@ -95,15 +103,19 @@ export class CalMonth {
     let month=1;
     let day=1;
     
-    for(; day <= 31 ;day++){
-      year.push(Array(12).fill('-'))
+    for(; day <= 30 ;day++){
+      year.push(Array(12).fill('. '))
       year[day][12] = '\n'
+      
+      if(day >= fab){
+        year[day].map( (d, idx)=> (month_days[idx] <= day) && (year[day][idx] = '  ') )
+      }
     }
     
     data.map(date=>{
       const day = Number(date.replace(/[0-9]*-/, ''))
       const month = Number(date.replace(/-[0-9]*/, ''))
-      year[day+2][month-1] ='x'
+      year[day][month-1] ='o '
     })
 
     this.shareDialog(year.toString().replace(/,/g,''))

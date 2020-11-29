@@ -29,7 +29,7 @@ export class CalMonth {
           }, 20*idx, this)
         }, 30*idx, this)
 
-        return <div class="day" id={`date-${this.num}-${k}`}>{String(k).padStart(2, "0")}</div>
+        return <div class="day" id={`date-${this.num}-${k}`}>.</div>
       })
       }
       </span>)

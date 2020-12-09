@@ -1,7 +1,13 @@
+app-cal{
+    grid-area: cal;
+    margin: auto;
+    margin-top: 0px;
+    max-width: 300px;
+}
 app-cal .year{
     display: flex;
     margin: auto;
-    max-width: 320px;
+    max-width: 300px;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
      -khtml-user-select: none;
@@ -16,7 +22,7 @@ cal-month {
     width: calc(100vw / 12);
 }
 cal-month .month-title{
-    font-size: 13px;
+    font-size: 10px;
     font-weight: lighter;
 }
 cal-month .day.reveal{
@@ -29,7 +35,7 @@ cal-month .day.reveal-font-level2{
     font-size: 3px;
 }
 cal-month .day.reveal-font-level1{
-    font-size: 2px;
+    font-size: 3px;
 }
 cal-month .day{
     display: flex;
@@ -60,11 +66,11 @@ cal-month .highlight{
 
 cal-month .select::after,
 cal-month .highlight::after{
-    background: #00ffe5;
+    background: #fff;
     border: 0;
     border-radius: 50px;
     bottom: 0;
-    box-shadow: 0 0 0 8px rgb(113 222 255 / 45%);
+    box-shadow: 0 0 0 8px rgb(113 222 255 / 65%);
     content: '3';
     height: 4px;
     left: 0;
@@ -74,13 +80,28 @@ cal-month .highlight::after{
     top: 0;
     width: 4px;
 }
+cal-month .select::after{
+    box-shadow: 0 0 0 8px rgb(255 255 255 / 35%);
+}
 
 cal-month .highlight.select:after{
     animation: unset;
+    box-shadow: 0 0 0 8px rgb(113 222 255 / 65%);
 }
 
 @keyframes blink{
     to {
         opacity: 0.5;
+    }
+}
+
+@media(min-width: 900px){
+    cal-month .day{
+        height: calc(100vh / 31 - 2px);
+    }
+}
+@media(min-width: 600px) and (max-width: 900px){
+    cal-month .day{
+        height: calc(100vh / 31 - 2px);
     }
 }

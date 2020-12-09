@@ -11,21 +11,10 @@ export class AppTabs {
   @Prop() year = (new Date()).getFullYear()
   @Element() comp;
 
+  // it's a real thing, it's called "Predicate"
+  // a state like to avoid re-render...
   newHabit = ()=> true
 
-  componentWillRender(){
-    const data = Object.values( get_data() )
-    let newItem = true;
-    data.map(d=> {
-      if(this._id == d.id){
-        newItem = false;
-      }
-    })
-
-    if(newItem){
-      insert_date(this._id, this.year, null)
-    }
-  }
   render() {
     const data = Object.values( get_data() )
     
@@ -40,6 +29,19 @@ export class AppTabs {
     </div>)
   }
 
+  componentWillRender(){
+    const data = Object.values( get_data() )
+    let newItem = true;
+    data.map(d=> {
+      if(this._id == d.id){
+        newItem = false;
+      }
+    })
+
+    if(newItem){
+      insert_date(this._id, this.year, null)
+    }
+  }
 
   componentDidRender(){
     this.comp.querySelectorAll('.tab').forEach(link=>{

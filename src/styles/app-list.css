@@ -1,0 +1,95 @@
+app-list {
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  grid-area: list;
+  /* height: calc(100vh - 6px); */
+  justify-content: flex-end;
+  left: 0;
+  margin: auto;
+  
+  max-width: 300px;
+  position: fixed;
+  right: 0;
+  top: unset;
+  width: 100vw;
+}
+
+app-list .list-wrapper {
+  background-color: rgb(25 25 25);
+  bottom: 35px;
+  display: flex;
+  flex-direction: column;
+  left: 0;
+  max-height: 100vh;
+  overflow: scroll;
+  padding: 8px 4px;
+  position: absolute;
+  right: 0;
+  row-gap: 8px;
+  top: unset;
+}
+
+app-list.hide{
+  overflow: hidden;
+}
+app-list .list.hide{
+  overflow: hidden;
+}
+app-list .list-wrapper.hide{
+  bottom: calc(-100vh - 18px);
+  display: none;
+}
+
+app-list .list-item > stencil-route-link a {
+  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  padding-left: 4px;
+}
+
+app-list .list-item a{
+  color: #fff;
+  text-decoration: none;
+}
+app-list .list-item > stencil-route-link > a:hover{
+  background-color: rgba(255, 255, 255, 0.128);
+}
+
+app-list button{
+  background: transparent;
+  border: unset;
+  color: var(--secondary-color);
+  cursor: pointer;
+  font-family: 'Coiny', cursive;
+  font-size: 16px;
+  padding: 8px;
+  transition: all 300ms ease-in-out;
+  width: 100%;
+}
+
+@media(min-width: 900px){
+  app-list{
+    height: 100vh;
+    position: relative;
+  }
+}
+
+@media(min-width: 600px) {
+  app-list .list-toggle{
+    /* display: none; */
+  }
+}
+
+@media(min-width: 600px) and (max-width: 900px){
+  app-list{
+    bottom: 0;
+    left: unset;
+    margin: 0px;
+    max-width: 300px;
+    top: unset;
+  }
+  app-list .list-wrapper{
+    height: calc(100vh - 185px);
+  }
+}

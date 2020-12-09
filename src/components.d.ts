@@ -18,6 +18,10 @@ export namespace Components {
         "history": any;
         "match": any;
     }
+    interface AppList {
+        "_id": string;
+        "year": number;
+    }
     interface AppNew {
     }
     interface AppOptions {
@@ -59,6 +63,12 @@ declare global {
     var HTMLAppHomeElement: {
         prototype: HTMLAppHomeElement;
         new (): HTMLAppHomeElement;
+    };
+    interface HTMLAppListElement extends Components.AppList, HTMLStencilElement {
+    }
+    var HTMLAppListElement: {
+        prototype: HTMLAppListElement;
+        new (): HTMLAppListElement;
     };
     interface HTMLAppNewElement extends Components.AppNew, HTMLStencilElement {
     }
@@ -105,6 +115,7 @@ declare global {
     interface HTMLElementTagNameMap {
         "app-cal": HTMLAppCalElement;
         "app-home": HTMLAppHomeElement;
+        "app-list": HTMLAppListElement;
         "app-new": HTMLAppNewElement;
         "app-options": HTMLAppOptionsElement;
         "app-profile": HTMLAppProfileElement;
@@ -126,6 +137,10 @@ declare namespace LocalJSX {
     interface AppHome {
         "history"?: any;
         "match"?: any;
+    }
+    interface AppList {
+        "_id"?: string;
+        "year"?: number;
     }
     interface AppNew {
     }
@@ -157,6 +172,7 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "app-cal": AppCal;
         "app-home": AppHome;
+        "app-list": AppList;
         "app-new": AppNew;
         "app-options": AppOptions;
         "app-profile": AppProfile;
@@ -172,6 +188,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "app-cal": LocalJSX.AppCal & JSXBase.HTMLAttributes<HTMLAppCalElement>;
             "app-home": LocalJSX.AppHome & JSXBase.HTMLAttributes<HTMLAppHomeElement>;
+            "app-list": LocalJSX.AppList & JSXBase.HTMLAttributes<HTMLAppListElement>;
             "app-new": LocalJSX.AppNew & JSXBase.HTMLAttributes<HTMLAppNewElement>;
             "app-options": LocalJSX.AppOptions & JSXBase.HTMLAttributes<HTMLAppOptionsElement>;
             "app-profile": LocalJSX.AppProfile & JSXBase.HTMLAttributes<HTMLAppProfileElement>;

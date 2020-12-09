@@ -1,0 +1,22 @@
+app-home .app-home{
+  margin: auto;
+  max-width: 1000px;
+}
+
+@media(min-width: 900px){
+  app-home .app-home{
+    display: grid;
+    grid-template-areas: 
+    "options cal list";
+    grid-template-columns: auto 1fr auto;
+  }
+}
+
+@media(min-width: 600px) and (max-width: 900px){
+  app-home .app-home{
+    display: grid;
+    grid-template-areas: 
+    "cal options";
+    grid-template-columns: 1fr auto
+  }
+}

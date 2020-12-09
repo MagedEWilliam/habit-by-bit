@@ -16,7 +16,6 @@ export class AppOptions {
   render() {
     return [
       <div class="options-wrapper">
-        <button class={{'show':this.show, 'today': true}} onClick={this.handleTodayClick.bind(this)}>[ Mark today? ]</button>
         <stencil-route-link url="/new-habit"><button class="option">[ New ]</button></stencil-route-link>
         <app-share _id={this._id} year={this.year} class={{'option': true}} />
         <button class="option" onClick={e=> this.deleteByID()}>[ Delete ]</button>
@@ -35,16 +34,6 @@ export class AppOptions {
       index++;
     }
     return get_data()[data[index]];
-  }
-
-  handleTodayClick() {
-    const dayClasses = document.querySelector(`#date-${this.month}-${this.day}`)
-    if(!dayClasses.classList.contains('highlight')){
-      dayClasses.click();
-
-      this.go('/' + this.getNextHabit().id)
-      this.show = false;
-    }
   }
 
   deleteByID(){

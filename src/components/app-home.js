@@ -21,14 +21,11 @@ export class AppHome {
               _id={this.match.params._id}
               year={this.match.params.year} />,
 
-            <app-options
-              go={this.proxyHistory.bind(this)}
-              _id={this.match.params._id}
-              year={this.match.params.year} />,
-
             <app-list
-              _id={this.match.params._id} />]
-              
+              go={this.proxyHistory.bind(this)}
+              _id={this.match.params._id} />,
+          ]
+
           : (!this.goToFirstHabit() ? <app-new /> : this.history.push('/' + this.goToFirstHabit()))
         }
       </div>

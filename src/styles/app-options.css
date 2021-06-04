@@ -82,16 +82,7 @@ app-options .done{
     100%{background-position:0% 82%}
 }
 
-@media(min-width: 900px){
-    app-options .options-wrapper{
-        display: block;
-    }
-}
-
 @media(min-width: 600px) and (max-width: 900px){
-    app-options .options-wrapper{
-        display: block;
-    }
     app-options{
         align-items: end;
         justify-content: start;

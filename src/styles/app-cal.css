@@ -2,6 +2,7 @@ app-cal{
     grid-area: cal;
     margin: auto;
     margin-top: 0px;
+    margin-right: 0px;
     max-width: 300px;
 }
 app-cal .year{

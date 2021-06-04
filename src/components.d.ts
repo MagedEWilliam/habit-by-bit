@@ -20,13 +20,13 @@ export namespace Components {
     }
     interface AppList {
         "_id": string;
+        "go": any;
         "year": number;
     }
     interface AppNew {
     }
     interface AppOptions {
         "_id": string;
-        "go": any;
         "show": boolean;
         "year": number;
     }
@@ -140,13 +140,13 @@ declare namespace LocalJSX {
     }
     interface AppList {
         "_id"?: string;
+        "go"?: any;
         "year"?: number;
     }
     interface AppNew {
     }
     interface AppOptions {
         "_id"?: string;
-        "go"?: any;
         "show"?: boolean;
         "year"?: number;
     }

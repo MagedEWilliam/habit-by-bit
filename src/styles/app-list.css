@@ -23,11 +23,12 @@ app-list .list-wrapper {
   left: 0;
   max-height: 100vh;
   overflow: scroll;
-  padding: 8px 4px;
+  padding: 4px;
   position: absolute;
   right: 0;
-  row-gap: 8px;
+  row-gap: 2px;
   top: unset;
+  height: calc(100vh - 54px);
 }
 
 app-list.hide{
@@ -41,6 +42,11 @@ app-list .list-wrapper.hide{
   display: none;
 }
 
+app-list .list-item {
+  display: grid;
+  grid-template-columns: 1fr 24px;
+  border: 1px solid transparent;
+}
 app-list .list-item > stencil-route-link a {
   align-items: center;
   display: grid;
@@ -51,11 +57,22 @@ app-list .list-item > stencil-route-link a {
 app-list .list-item a{
   color: #fff;
   text-decoration: none;
+  
 }
-app-list .list-item > stencil-route-link > a:hover{
+app-list .list-item > stencil-route-link a.link-active {
   background-color: rgba(255, 255, 255, 0.128);
 }
+app-list .list-item:hover{
+  border: 1px solid #fff;
+}
 
+app-list .options{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+app-list a,
 app-list button{
   background: transparent;
   border: unset;
@@ -63,15 +80,18 @@ app-list button{
   cursor: pointer;
   font-family: 'Coiny', cursive;
   font-size: 16px;
-  padding: 8px;
+  padding: 4px;
+  padding-left: 0px;
+  padding-right: 0px;
   transition: all 300ms ease-in-out;
-  width: 100%;
+  /* width: 100%; */
 }
 
-@media(min-width: 900px){
+@media(min-width: 700px){
   app-list{
     height: 100vh;
     position: relative;
+    margin-left: 0px;
   }
 }
 
@@ -81,7 +101,7 @@ app-list button{
   }
 }
 
-@media(min-width: 600px) and (max-width: 900px){
+/* @media(min-width: 600px) and (max-width: 900px){
   app-list{
     bottom: 0;
     left: unset;
@@ -90,6 +110,6 @@ app-list button{
     top: unset;
   }
   app-list .list-wrapper{
-    height: calc(100vh - 185px);
+    height: calc(100vh - 54px);
   }
-}
+} */

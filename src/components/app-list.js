@@ -1,5 +1,5 @@
 import { Component, h, Prop, State, Element, Listen } from '@stencil/core';
-import { get_data, insert_date } from '../store';
+import { get_data, insert_date, deleteByID } from '../store';
 
 @Component({
   tag: 'app-list',
@@ -13,18 +13,19 @@ export class AppHome {
   @State() month = (new Date()).getMonth() + 1
   @State() hideList = false;
   @State() timeout;
+  @Prop() go;
 
   @Listen('resize', { target: 'window' })
   handleScroll(ev) {
     if (this.timeout) {
       window.cancelAnimationFrame(this.timeout);
     }
-    this.timeout = window.requestAnimationFrame(()=> {
-      if(window.innerWidth <= 600){
-        if(!this.hideList){
+    this.timeout = window.requestAnimationFrame(() => {
+      if (window.innerWidth <= 700) {
+        if (!this.hideList) {
           this.hideList = true;
         }
-      }else{
+      } else {
         this.hideList = false;
       }
     });
@@ -44,22 +45,37 @@ export class AppHome {
             <div class="list-item">
               <stencil-route-link url={'/' + d.id}>
                 <a class="tab">{d.name}</a>
+
                 <button
                   id={'mark_' + d.id}
                   onClick={e => this.handleTodayClick(e, d.id)}
                 >[ Mark Today ]</button>
+
               </stencil-route-link>
+              <button class="option" onClick={e => this.deleteByID(d.id, d.name)}>x</button>
             </div>
           )
           )}
         </div>
-        <button
-          class="list-toggle"
-          onClick={e => this.handleListToggle(e)}
-        >[ {!this.hideList ?
-          'Close' : 'List'} ]</button>
+        <div class="options">
+          <stencil-route-link url="/new-habit"><button class="option">[ New ]</button></stencil-route-link>
+          <button
+            class="list-toggle"
+            onClick={e => this.handleListToggle(e)}
+          >[ {!this.hideList ?
+            'Close' : 'List'} ]</button>
+        </div>
+
       </div>
     )
+  }
+
+  deleteByID(id, name) {
+    const deleteit = confirm(`Delete all of ${name}?`)
+    if (deleteit) {
+      deleteByID(id)
+      this.go('/')
+    }
   }
 
   handleListToggle() {

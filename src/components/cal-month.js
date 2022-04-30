@@ -13,25 +13,25 @@ export class CalMonth {
   render() {
     return (<span class="month" month={this.num}>
       <p class="month-title" fill="#CECECE">{this.name}</p>
-      {[ ...Array(this.days).keys() ].map((k, idx)=>{
+      {[...Array(this.days + 1).keys()].map((k, idx) => {
 
-        setTimeout(()=>{
+        setTimeout(() => {
           this.comp.querySelector(`#date-${this.num}-${k}`).classList.add('reveal');
-        }, 30*idx, this)
+        }, 30 * idx, this)
 
-        setTimeout(()=>{
+        setTimeout(() => {
           this.comp.querySelector(`#date-${this.num}-${k}`).classList.add('reveal-font-level3');
-          setTimeout(()=>{
+          setTimeout(() => {
             this.comp.querySelector(`#date-${this.num}-${k}`).classList.add('reveal-font-level2');
-            setTimeout(()=>{
+            setTimeout(() => {
               this.comp.querySelector(`#date-${this.num}-${k}`).classList.add('reveal-font-level1');
-            }, 10*idx, this)
-          }, 20*idx, this)
-        }, 30*idx, this)
+            }, 10 * idx, this)
+          }, 20 * idx, this)
+        }, 30 * idx, this)
 
         return <div class="day" id={`date-${this.num}-${k}`}>.</div>
       })
       }
-      </span>)
+    </span>)
   }
 }
